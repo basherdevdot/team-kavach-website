@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube, IconMail, IconPhone, IconMapPin, IconHeart } from '@tabler/icons-react';
+import { IconBrandInstagram, IconBrandLinkedin, IconBrandYoutube, IconMail, IconPhone, IconMapPin, IconHeart } from '@tabler/icons-react';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
