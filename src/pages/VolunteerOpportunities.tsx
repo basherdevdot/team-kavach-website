@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Search, MapPin, Clock, Filter } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { Card } from '../components/Card';
-import { Badge, Tag } from '../components/Badge';
+import { Badge } from '../components/Badge';
 import { PrimaryButton, GhostButton } from '../components/Button';
 import { filterOpportunities } from '../data/opportunities';
 import { useNavigate } from 'react-router-dom';
@@ -125,14 +125,17 @@ const VolunteerOpportunities: React.FC = () => {
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {causes.map((cause) => (
-                    <Tag
+                    <button
                       key={cause}
-                      variant={selectedCauses.includes(cause) ? 'primary' : 'secondary'}
                       onClick={() => toggleFilter(selectedCauses, setSelectedCauses, cause)}
-                      className="cursor-pointer"
+                      className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${
+                        selectedCauses.includes(cause)
+                          ? 'bg-primary text-white'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
                     >
                       {cause}
-                    </Tag>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -184,14 +187,17 @@ const VolunteerOpportunities: React.FC = () => {
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {availabilitySlots.map((slot) => (
-                    <Tag
+                    <button
                       key={slot}
-                      variant={selectedSlots.includes(slot) ? 'accent' : 'secondary'}
                       onClick={() => toggleFilter(selectedSlots, setSelectedSlots, slot)}
-                      className="cursor-pointer"
+                      className={`px-4 py-2 rounded-full font-semibold transition-all cursor-pointer ${
+                        selectedSlots.includes(slot)
+                          ? 'bg-accent text-white'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      }`}
                     >
                       {slot}
-                    </Tag>
+                    </button>
                   ))}
                 </div>
               </div>

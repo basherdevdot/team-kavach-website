@@ -1,45 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PageHeader } from '../components/PageHeader';
 import { Button } from '@/components/ui/button';
 import { Heart, Copy, Check, Smartphone } from 'lucide-react';
 
-interface Event {
-  id: number;
-  title: string;
-  fundraising: {
-    goalAmount: number;
-    currentAmount: number;
-    currency: string;
-    deadline: string;
-  } | null;
-}
-
 const Donate: React.FC = () => {
-  const [searchParams] = useSearchParams();
-  const eventParam = searchParams.get('event');
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [copiedUPI, setCopiedUPI] = useState(false);
   const [copiedAccount, setCopiedAccount] = useState(false);
 
   const UPI_ID = "teamkavach@ybl";
   const PHONEPE = "+91 9611438065";
-
-  useEffect(() => {
-    if (eventParam) {
-      fetch('/data/events.json')
-        .then(res => res.json())
-        .then(data => {
-          const event = data.upcomingEvents.find((e: any) => 
-            e.title.toLowerCase().replace(/\s+/g, '-') === eventParam
-          );
-          if (event) {
-            setSelectedEvent(event);
-          }
-        });
-    }
-  }, [eventParam]);
 
   const copyToClipboard = (text: string, type: 'upi' | 'account') => {
     navigator.clipboard.writeText(text);

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   IconSchool,
   IconMedicalCross,
@@ -10,7 +10,6 @@ import {
   IconCircleCheck
 } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 
 const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
   children, 

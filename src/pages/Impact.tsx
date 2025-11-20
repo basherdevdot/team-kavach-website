@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PageHeader } from '../components/PageHeader';
-import { StatCard, TestimonialCard } from '../components/Card';
+import { StatCard } from '../components/Card';
 import { impactStats, milestones } from '../data/mockData';
 import { stories } from '../data/stories';
 import { Users, Heart, MapPin, Building, Target, Clock } from 'lucide-react';
