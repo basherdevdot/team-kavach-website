@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Clock, X, Filter } from 'lucide-react';
+import { Search, MapPin, Clock, Filter } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { Card } from '../components/Card';
 import { Badge, Tag } from '../components/Badge';

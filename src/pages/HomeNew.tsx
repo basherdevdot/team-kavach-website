@@ -598,7 +598,7 @@ export default function Home() {
         </div>
 
         {/* Custom Scrollbar Hide */}
-        <style jsx>{`
+        <style>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
           }

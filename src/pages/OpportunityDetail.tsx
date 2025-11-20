@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Users, AlertCircle, Calendar, ArrowLeft } from 'lucide-react';
+import { MapPin, Clock, Calendar, ArrowLeft } from 'lucide-react';
 import { getOpportunityBySlug } from '../data/opportunities';
 import { PageHeader } from '../components/PageHeader';
 import { Card } from '../components/Card';

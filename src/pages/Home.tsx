@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Users, MapPin, Clock, Heart, Target, Building, Award } from 'lucide-react';
 import { PrimaryButton, SecondaryButton } from '../components/Button';
-import { StatCard, TestimonialCard, Card } from '../components/Card';
+import { TestimonialCard, Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { getFeaturedOpportunities } from '../data/opportunities';
 import { impactStats, testimonials } from '../data/mockData';

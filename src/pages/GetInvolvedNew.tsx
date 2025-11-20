@@ -7,7 +7,6 @@ import {
   IconCalendar,
   IconBrandInstagram,
   IconMail,
-  IconPhone,
   IconArrowRight,
   IconCircleCheck,
   IconSparkles

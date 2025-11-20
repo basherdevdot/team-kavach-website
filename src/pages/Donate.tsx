@@ -25,9 +25,9 @@ const Donate: React.FC = () => {
 
   const UPI_ID = "teamkavach@ybl";
   const PHONEPE = "+91 9611438065";
-  const ACCOUNT_NUMBER = "50200089968840";
-  const IFSC = "HDFC0009429";
 
+  useEffect(() => {
+    if (eventParam) {
   useEffect(() => {
     if (eventParam) {
       fetch('/data/events.json')
@@ -41,13 +41,7 @@ const Donate: React.FC = () => {
           }
         });
     }
-  }, [eventParam]);
-
-  const progressPercentage = selectedEvent?.fundraising
-    ? Math.round((selectedEvent.fundraising.currentAmount / selectedEvent.fundraising.goalAmount) * 100)
-    : 0;
-
-  const copyToClipboard = (text: string, type: 'upi' | 'account') => {
+  }, [eventParam]);copyToClipboard = (text: string, type: 'upi' | 'account') => {
     navigator.clipboard.writeText(text);
     if (type === 'upi') {
       setCopiedUPI(true);

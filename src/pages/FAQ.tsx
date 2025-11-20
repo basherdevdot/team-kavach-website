@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { faqs, getFAQsByCategory } from '../data/mockData';
+import { faqs } from '../data/mockData';
 
 const FAQ: React.FC = () => {
   const [openId, setOpenId] = useState<string | null>(null);
