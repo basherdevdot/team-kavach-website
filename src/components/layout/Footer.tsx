@@ -1,0 +1,170 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube, IconMail, IconPhone, IconMapPin, IconHeart } from '@tabler/icons-react';
+
+const quickLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Impact', path: '/impact' },
+  { name: 'Programs', path: '/programs' },
+];
+
+const volunteerLinks = [
+  { name: 'Get Involved', path: '/get-involved' },
+  // { name: 'Volunteer Stories', path: '/stories' },
+];
+
+const supportLinks = [
+  { name: 'Donate', path: '/donate' },
+  { name: 'Contact Us', path: '/contact' },
+  { name: 'Partnership', path: '/contact' },
+];
+
+const socialLinks = [
+  // { name: 'Facebook', icon: IconBrandFacebook, url: 'https://facebook.com' },
+  { name: 'Instagram', icon: IconBrandInstagram, url: 'https://www.instagram.com/teamkavach/' },
+  { name: 'LinkedIn', icon: IconBrandLinkedin, url: 'https://www.linkedin.com/company/team-kavach/' },
+  // { name: 'Twitter', icon: IconBrandTwitter, url: 'https://twitter.com' },
+  { name: 'YouTube', icon: IconBrandYoutube, url: 'https://www.youtube.com/@TeamKavach' },
+];
+
+export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-foreground text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          {/* About Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center">
+                <IconHeart className="w-7 h-7 text-white fill-white" strokeWidth={2} />
+              </div>
+              <span className="text-2xl font-black">
+                Team<span className="text-primary">Kavach</span>
+              </span>
+            </div>
+            <p className="text-white/70 mb-8 max-w-md leading-relaxed text-base">
+              Shielding vulnerable lives, one volunteer at a time. Join our community
+              of passionate volunteers making a meaningful impact in Bangalore.
+            </p>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                <IconMail className="w-5 h-5" strokeWidth={2} />
+                <a href="mailto:teamkavach1@gmail.com" className="font-medium">
+                  teamkavach1@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+                <IconPhone className="w-5 h-5" strokeWidth={2} />
+                <a href="tel:+917892474801" className="font-medium">
+                  +91 7892474801
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-white/70">
+                <IconMapPin className="w-5 h-5" strokeWidth={2} />
+                <span className="font-medium">Bangalore, Karnataka, India</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-black text-lg mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-white/70 hover:text-primary transition-colors font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Volunteer */}
+          <div>
+            <h3 className="font-black text-lg mb-6 text-white">Volunteer</h3>
+            <ul className="space-y-3">
+              {volunteerLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-white/70 hover:text-primary transition-colors font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="font-black text-lg mb-6 text-white">Support</h3>
+            <ul className="space-y-3">
+              {supportLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-white/70 hover:text-primary transition-colors font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="border-t border-white/10 pt-8 mb-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-xl bg-white/10 hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
+                    aria-label={social.name}
+                  >
+                    <Icon className="w-5 h-5" strokeWidth={2} />
+                  </a>
+                );
+              })}
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-white/60">
+              <Link to="/terms" className="hover:text-white transition-colors font-medium">
+                Terms of Service
+              </Link>
+              <Link to="/privacy" className="hover:text-white transition-colors font-medium">
+                Privacy Policy
+              </Link>
+              <Link to="/disclaimer" className="hover:text-white transition-colors font-medium">
+                Disclaimer
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="text-center text-sm text-white/50">
+          <p className="font-medium">
+            © {currentYear} TeamKavach. All rights reserved. | Registered Non-Profit Organization
+          </p>
+          <p className="mt-2 flex items-center justify-center gap-2">
+            Built with <IconHeart className="w-4 h-4 text-primary fill-primary" /> by volunteers for the community
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
