@@ -28,8 +28,6 @@ const Donate: React.FC = () => {
 
   useEffect(() => {
     if (eventParam) {
-  useEffect(() => {
-    if (eventParam) {
       fetch('/data/events.json')
         .then(res => res.json())
         .then(data => {
@@ -41,7 +39,9 @@ const Donate: React.FC = () => {
           }
         });
     }
-  }, [eventParam]);copyToClipboard = (text: string, type: 'upi' | 'account') => {
+  }, [eventParam]);
+
+  const copyToClipboard = (text: string, type: 'upi' | 'account') => {
     navigator.clipboard.writeText(text);
     if (type === 'upi') {
       setCopiedUPI(true);
