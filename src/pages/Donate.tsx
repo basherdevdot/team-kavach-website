@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PageHeader } from '../components/PageHeader';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, TrendingUp, Copy, Check, Smartphone, Building } from 'lucide-react';
+import { Heart, Copy, Check, Smartphone } from 'lucide-react';
 
 interface Event {
   id: number;
