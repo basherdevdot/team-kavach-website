@@ -41,8 +41,22 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
-                <IconHeart className="w-7 h-7 text-white fill-white" strokeWidth={2} />
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg overflow-hidden">
+                <img 
+                  src="/images/Logo_TeamKavach.png" 
+                  alt="Team Kavach Logo" 
+                  className="w-10 h-10 object-contain"
+                  onError={(e) => {
+                    // Fallback to heart icon if image not found
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.classList.add('bg-primary');
+                      parent.classList.remove('bg-white');
+                      parent.innerHTML = '<svg class="w-7 h-7 text-white fill-white" stroke-width="2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
+                    }
+                  }}
+                />
               </div>
               <span className={`text-2xl font-black ${
                 isScrolled || !isHomePage ? 'text-foreground' : 'text-white'

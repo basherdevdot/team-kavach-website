@@ -172,7 +172,7 @@ export default function Home() {
               asChild 
               size="lg" 
               variant="outline" 
-              className="text-base px-8 h-14 font-bold text-lg border-2 border-white text-white hover:bg-white hover:text-foreground shadow-2xl"
+              className="text-base px-8 h-14 font-bold text-lg border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-foreground shadow-2xl"
             >
               <Link to="/programs">Explore Programs</Link>
             </Button>
