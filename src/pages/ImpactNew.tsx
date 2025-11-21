@@ -121,12 +121,12 @@ export default function Impact() {
               <span className="text-sm font-bold">Growing Impact Since 2022</span>
             </div>
             
-            <h1 className="text-white mb-6">
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
               Our Impact
               <br />
               <span className="text-secondary">In Numbers</span>
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
               Real stories, real numbers, real change—see how we're transforming lives across Bangalore
             </p>
           </motion.div>
@@ -136,8 +136,8 @@ export default function Impact() {
       {/* Stats Grid */}
       <Section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="mb-4">Impact by Numbers</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">Impact by Numbers</h2>
             <p className="text-xl text-foreground/70">Measurable change we've created together</p>
           </div>
 

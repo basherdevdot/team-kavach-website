@@ -40,23 +40,23 @@ const Donate: React.FC = () => {
           >
             <div className="bg-white rounded-3xl p-8 md:p-12">
               <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
                   MISSION WINTER RELIEF
                 </h2>
-                <p className="text-xl md:text-2xl font-bold text-foreground mb-6">
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-6">
                   Spreading warmth, one blanket at a time
                 </p>
-                <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto mt-8">
                   <div className="text-center">
-                    <div className="text-4xl font-black text-primary mb-2">₹250</div>
+                    <div className="text-3xl sm:text-4xl font-black text-primary mb-2">₹250</div>
                     <div className="text-sm text-foreground/70 font-semibold">for a Blanket and Food packet</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-black text-accent mb-2">500+</div>
+                    <div className="text-3xl sm:text-4xl font-black text-accent mb-2">500+</div>
                     <div className="text-sm text-foreground/70 font-semibold">People to help</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-black text-secondary mb-2">Winter</div>
+                    <div className="text-3xl sm:text-4xl font-black text-secondary mb-2">Winter</div>
                     <div className="text-sm text-foreground/70 font-semibold">Your warmth, their survival</div>
                   </div>
                 </div>
@@ -74,36 +74,36 @@ const Donate: React.FC = () => {
             >
               <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-primary/20 hover:border-primary/60 transition-all">
                 <div className="text-center mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Smartphone className="w-10 h-10 text-white" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-foreground mb-2">UPI Payment</h3>
-                  <p className="text-foreground/60 font-semibold">Quick & Easy - Pay via any UPI app</p>
+                  <h3 className="text-2xl sm:text-3xl font-black text-foreground mb-2">UPI Payment</h3>
+                  <p className="text-sm sm:text-base text-foreground/60 font-semibold">Quick & Easy - Pay via any UPI app</p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-5 rounded-xl border-2 border-primary/30">
+                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 sm:p-5 rounded-xl border-2 border-primary/30">
                     <p className="text-sm font-bold text-foreground/70 mb-2">UPI ID</p>
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-xl font-black text-foreground">{UPI_ID}</p>
+                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                      <p className="text-lg sm:text-xl font-black text-foreground break-all">{UPI_ID}</p>
                       <Button
                         size="sm"
                         onClick={() => copyToClipboard(UPI_ID, 'upi')}
-                        className="bg-primary hover:bg-primary/90 text-white font-bold"
+                        className="bg-primary hover:bg-primary/90 text-white font-bold flex-shrink-0"
                       >
                         {copiedUPI ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                       </Button>
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-secondary/10 to-primary/10 p-5 rounded-xl border-2 border-secondary/30">
+                  <div className="bg-gradient-to-r from-secondary/10 to-primary/10 p-4 sm:p-5 rounded-xl border-2 border-secondary/30">
                     <p className="text-sm font-bold text-foreground/70 mb-2">PhonePe Number</p>
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-xl font-black text-foreground">{PHONEPE}</p>
+                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                      <p className="text-lg sm:text-xl font-black text-foreground">{PHONEPE}</p>
                       <Button
                         size="sm"
                         onClick={() => copyToClipboard(PHONEPE, 'account')}
-                        className="bg-secondary hover:bg-secondary/90 text-dark font-bold"
+                        className="bg-secondary hover:bg-secondary/90 text-dark font-bold flex-shrink-0"
                       >
                         {copiedAccount ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                       </Button>
@@ -111,7 +111,7 @@ const Donate: React.FC = () => {
                   </div>
 
                   <div className="bg-accent/10 p-4 rounded-xl">
-                    <div className="text-sm text-foreground/70 space-y-2 font-semibold">
+                    <div className="text-xs sm:text-sm text-foreground/70 space-y-2 font-semibold">
                       <p className="flex items-center gap-2">✓ Open any UPI app (GPay, PhonePe, Paytm)</p>
                       <p className="flex items-center gap-2">✓ Enter UPI ID or Phone number</p>
                       <p className="flex items-center gap-2">✓ Send ₹250 or any amount</p>
@@ -178,41 +178,41 @@ const Donate: React.FC = () => {
             transition={{ delay: 0.4 }}
             className="bg-gradient-to-r from-secondary via-yellow-400 to-secondary p-1 rounded-3xl shadow-2xl mb-12"
           >
-            <div className="bg-white rounded-3xl p-8">
-              <h3 className="text-2xl font-black text-foreground mb-6 flex items-center gap-3">
-                <Heart className="w-8 h-8 text-primary" />
+            <div className="bg-white rounded-3xl p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-black text-foreground mb-4 sm:mb-6 flex items-center gap-3">
+                <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                 Important: After Payment
               </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0">1</div>
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0 text-sm">1</div>
                     <div>
-                      <p className="font-bold text-foreground">Take Screenshot</p>
-                      <p className="text-sm text-foreground/70">Capture payment confirmation</p>
+                      <p className="font-bold text-foreground text-sm sm:text-base">Take Screenshot</p>
+                      <p className="text-xs sm:text-sm text-foreground/70">Capture payment confirmation</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-black shrink-0">2</div>
+                    <div className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-black shrink-0 text-sm">2</div>
                     <div>
-                      <p className="font-bold text-foreground">WhatsApp Us</p>
-                      <a href="https://wa.me/917892474801" className="text-sm text-primary font-bold hover:underline">+91 7892474801</a>
+                      <p className="font-bold text-foreground text-sm sm:text-base">WhatsApp Us</p>
+                      <a href="https://wa.me/917892474801" className="text-xs sm:text-sm text-primary font-bold hover:underline break-all">+91 7892474801</a>
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-secondary text-dark flex items-center justify-center font-black shrink-0">3</div>
+                    <div className="w-8 h-8 rounded-full bg-secondary text-dark flex items-center justify-center font-black shrink-0 text-sm">3</div>
                     <div>
-                      <p className="font-bold text-foreground">Or Email</p>
-                      <a href="mailto:teamkavach1@gmail.com" className="text-sm text-primary font-bold hover:underline break-all">teamkavach1@gmail.com</a>
+                      <p className="font-bold text-foreground text-sm sm:text-base">Or Email</p>
+                      <a href="mailto:teamkavach1@gmail.com" className="text-xs sm:text-sm text-primary font-bold hover:underline break-all">teamkavach1@gmail.com</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0">4</div>
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0 text-sm">4</div>
                     <div>
-                      <p className="font-bold text-foreground">Get Receipt</p>
-                      <p className="text-sm text-foreground/70">Within 24 hours</p>
+                      <p className="font-bold text-foreground text-sm sm:text-base">Get Receipt</p>
+                      <p className="text-xs sm:text-sm text-foreground/70">Within 24 hours</p>
                     </div>
                   </div>
                 </div>
@@ -225,24 +225,24 @@ const Donate: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-white rounded-3xl p-8 shadow-xl border-2 border-primary/20 text-center"
+            className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-primary/20 text-center"
           >
-            <h3 className="text-2xl font-black text-foreground mb-4">Need Help?</h3>
-            <p className="text-foreground/70 mb-6 font-semibold">
+            <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3 sm:mb-4">Need Help?</h3>
+            <p className="text-sm sm:text-base text-foreground/70 mb-4 sm:mb-6 font-semibold">
               Have questions about donations? Contact us anytime!
             </p>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">
               <a 
                 href="https://wa.me/917892474801" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg"
+                className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg text-sm sm:text-base"
               >
                 📱 WhatsApp
               </a>
               <a 
                 href="mailto:teamkavach1@gmail.com"
-                className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg"
+                className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg text-sm sm:text-base"
               >
                 ✉️ Email Us
               </a>

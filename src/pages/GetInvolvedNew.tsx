@@ -98,12 +98,12 @@ export default function GetInvolved() {
               <span className="text-sm font-bold">Join 150+ Volunteers</span>
             </div>
             
-            <h1 className="text-white mb-6">
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
               Get Involved
               <br />
               <span className="text-secondary">Make an Impact</span>
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
               Join our community of passionate volunteers creating real change in Bangalore through education, healthcare, and social initiatives
             </p>
           </motion.div>
@@ -113,14 +113,14 @@ export default function GetInvolved() {
       {/* Why Volunteer Section */}
       <Section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Why Volunteer With Us?</h2>
-            <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">Why Volunteer With Us?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
               Volunteering is more than giving your time—it's about building connections, developing skills, and being part of something bigger
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {[
               { icon: IconHeart, title: 'Real Impact', desc: 'See tangible results of your efforts' },
               { icon: IconUsers, title: 'Community', desc: 'Join a passionate group of changemakers' },
@@ -135,11 +135,11 @@ export default function GetInvolved() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <item.icon className="w-10 h-10 text-primary" strokeWidth={2} />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-6">
+                  <item.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={2} />
                 </div>
-                <h3 className="text-xl font-black mb-3">{item.title}</h3>
-                <p className="text-foreground/70">{item.desc}</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-black mb-2 sm:mb-3">{item.title}</h3>
+                <p className="text-sm sm:text-base text-foreground/70">{item.desc}</p>
               </motion.div>
             ))}
           </div>

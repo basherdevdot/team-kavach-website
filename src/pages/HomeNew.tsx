@@ -136,7 +136,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-white mb-8 max-w-6xl mx-auto"
+            className="text-white mb-8 max-w-6xl mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight"
           >
             We're Building
             <br />
@@ -238,10 +238,10 @@ export default function Home() {
               <IconCalendar className="w-5 h-5" />
               <span className="font-black">UPCOMING EVENT</span>
             </motion.div>
-            <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               Join Our Next Event
             </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto">
               Be part of the change. Register now and make a real difference in people's lives
             </p>
           </div>
@@ -268,8 +268,8 @@ export default function Home() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-3xl opacity-75 blur-xl group-hover:opacity-100 transition-all duration-500" />
                   
                   {/* Main Poster Container */}
-                  <div className="relative bg-white p-4 rounded-2xl shadow-2xl border-4 border-white">
-                    <div className="relative h-[500px] lg:h-[600px] overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-purple-600">
+                  <div className="relative bg-white p-2 sm:p-4 rounded-2xl shadow-2xl border-4 border-white">
+                    <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-purple-600">
                       <img 
                         src={events[0].posterUrl} 
                         alt={events[0].title}
@@ -293,9 +293,9 @@ export default function Home() {
                       </div>
                       
                       {/* Date Badge Overlay */}
-                      <div className="absolute top-6 right-6 bg-white rounded-2xl px-6 py-4 text-center shadow-2xl border-4 border-primary/20">
-                        <div className="text-5xl font-black text-primary">{events[0].date}</div>
-                        <div className="text-sm font-black text-foreground/70 tracking-wider">{events[0].month}</div>
+                      <div className="absolute top-3 right-3 sm:top-6 sm:right-6 bg-white rounded-xl sm:rounded-2xl px-3 py-2 sm:px-6 sm:py-4 text-center shadow-2xl border-2 sm:border-4 border-primary/20">
+                        <div className="text-3xl sm:text-5xl font-black text-primary">{events[0].date}</div>
+                        <div className="text-xs sm:text-sm font-black text-foreground/70 tracking-wider">{events[0].month}</div>
                       </div>
                     </div>
                   </div>
@@ -312,52 +312,52 @@ export default function Home() {
               >
                 {/* Event Title */}
                 <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
-                    <IconSparkles className="w-4 h-4" />
-                    <span className="text-sm font-black uppercase tracking-wide">Featured Event</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary mb-3 sm:mb-4">
+                    <IconSparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm font-black uppercase tracking-wide">Featured Event</span>
                   </div>
-                  <h3 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 leading-tight">
                     {events[0].title}
                   </h3>
-                  <p className="text-xl text-foreground/70 leading-relaxed">
+                  <p className="text-base sm:text-lg md:text-xl text-foreground/70 leading-relaxed">
                     {events[0].shortDescription || events[0].description}
                   </p>
                 </div>
 
                 {/* Event Details Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-primary/10 p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
-                    <div className="text-sm font-bold text-primary/70 mb-1">📅 DATE</div>
-                    <div className="text-lg font-black text-foreground">{events[0].fullDate}</div>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-primary/10 p-3 sm:p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
+                    <div className="text-xs sm:text-sm font-bold text-primary/70 mb-1">📅 DATE</div>
+                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground">{events[0].fullDate}</div>
                   </div>
-                  <div className="bg-secondary/10 p-5 rounded-xl border-2 border-secondary/20 hover:border-secondary/40 transition-all">
-                    <div className="text-sm font-bold text-secondary/70 mb-1">⏰ TIME</div>
-                    <div className="text-lg font-black text-foreground">{events[0].time}</div>
+                  <div className="bg-secondary/10 p-3 sm:p-5 rounded-xl border-2 border-secondary/20 hover:border-secondary/40 transition-all">
+                    <div className="text-xs sm:text-sm font-bold text-secondary/70 mb-1">⏰ TIME</div>
+                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground">{events[0].time}</div>
                   </div>
-                  <div className="bg-accent/10 p-5 rounded-xl border-2 border-accent/20 hover:border-accent/40 transition-all">
-                    <div className="text-sm font-bold text-accent/70 mb-1">📍 VENUE</div>
-                    <div className="text-lg font-black text-foreground">{events[0].venue}</div>
+                  <div className="bg-accent/10 p-3 sm:p-5 rounded-xl border-2 border-accent/20 hover:border-accent/40 transition-all">
+                    <div className="text-xs sm:text-sm font-bold text-accent/70 mb-1">📍 VENUE</div>
+                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground line-clamp-2">{events[0].venue}</div>
                   </div>
-                  <div className="bg-primary/10 p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
-                    <div className="text-sm font-bold text-primary/70 mb-1">📌 LOCATION</div>
-                    <div className="text-lg font-black text-foreground">{events[0].location}</div>
+                  <div className="bg-primary/10 p-3 sm:p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
+                    <div className="text-xs sm:text-sm font-bold text-primary/70 mb-1">📌 LOCATION</div>
+                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground line-clamp-2">{events[0].location}</div>
                   </div>
                 </div>
 
                 {/* Event Stats */}
                 {events[0].stats && (
-                  <div className="bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 p-6 rounded-xl border-2 border-primary/10">
-                    <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 p-4 sm:p-6 rounded-xl border-2 border-primary/10">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                       <div>
-                        <div className="text-3xl font-black text-primary">{events[0].stats.target}</div>
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-primary">{events[0].stats.target}</div>
                         <div className="text-xs font-bold text-foreground/60 mt-1">TARGET</div>
                       </div>
                       <div>
-                        <div className="text-3xl font-black text-secondary">{events[0].stats.volunteers}</div>
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-secondary">{events[0].stats.volunteers}</div>
                         <div className="text-xs font-bold text-foreground/60 mt-1">VOLUNTEERS</div>
                       </div>
                       <div>
-                        <div className="text-3xl font-black text-accent">{events[0].stats.locations}</div>
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-accent">{events[0].stats.locations}</div>
                         <div className="text-xs font-bold text-foreground/60 mt-1">LOCATIONS</div>
                       </div>
                     </div>
@@ -365,16 +365,16 @@ export default function Home() {
                 )}
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                   <Link to={events[0].registrationLink} className="flex-1">
-                    <Button size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-black text-lg py-7 shadow-xl hover:shadow-2xl transition-all">
-                      <IconUsers className="w-6 h-6 mr-2" />
+                    <Button size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-black text-sm sm:text-base md:text-lg py-5 sm:py-6 md:py-7 shadow-xl hover:shadow-2xl transition-all">
+                      <IconUsers className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
                       Register as Volunteer
                     </Button>
                   </Link>
                   <Link to={events[0].donationLink} className="flex-1">
-                    <Button size="lg" variant="outline" className="w-full border-2 border-primary hover:bg-primary hover:text-white font-black text-lg py-7 shadow-lg hover:shadow-xl transition-all">
-                      <IconHeart className="w-6 h-6 mr-2" />
+                    <Button size="lg" variant="outline" className="w-full border-2 border-primary hover:bg-primary hover:text-white font-black text-sm sm:text-base md:text-lg py-5 sm:py-6 md:py-7 shadow-lg hover:shadow-xl transition-all">
+                      <IconHeart className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
                       Donate Now
                     </Button>
                   </Link>
@@ -544,13 +544,13 @@ export default function Home() {
               <IconBrandInstagram className="w-6 h-6" />
               <span className="font-black uppercase tracking-wide">Live from Instagram</span>
             </motion.div>
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
               See Our Impact In Action
             </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-4">
+            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-4">
               Real stories. Real people. Real change happening every day.
             </p>
-            <p className="text-sm text-white/70 font-semibold">
+            <p className="text-xs sm:text-sm text-white/70 font-semibold">
               ← Swipe to see more posts →
             </p>
           </div>
@@ -564,7 +564,7 @@ export default function Home() {
           
           {/* Scrollable Instagram Feed */}
           <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-6 pb-8 w-max">
+            <div className="flex gap-4 sm:gap-6 pb-8 w-max">
               {instagramUrls.map((url, index) => (
                 <motion.div
                   key={index}
@@ -572,12 +572,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="flex-shrink-0 w-auto max-w-[500px] bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105"
+                  className="flex-shrink-0 w-auto max-w-[500px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105"
                 >
                   <div className="bg-white">
                     <InstagramEmbed 
                       url={url} 
-                      width={450}
+                      width={Math.min(450, window.innerWidth - 40)}
                       captioned={false}
                     />
                   </div>

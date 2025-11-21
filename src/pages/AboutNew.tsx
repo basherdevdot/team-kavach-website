@@ -87,12 +87,12 @@ export default function About() {
               <span className="text-sm font-bold">Since 2022</span>
             </div>
             
-            <h1 className="text-white mb-6">
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
               About Us
               <br />
               <span className="text-secondary">Our Story</span>
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
               We're a passionate community of volunteers dedicated to creating lasting social impact in Bangalore through grassroots initiatives
             </p>
           </motion.div>
@@ -102,10 +102,10 @@ export default function About() {
       {/* Our Story */}
       <Section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
-              <h2 className="mb-6">Who We Are</h2>
-              <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
+              <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">Who We Are</h2>
+              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-foreground/80 leading-relaxed">
                 <p>
                   <strong className="text-foreground font-black">Team Kavach</strong> was founded in 2022 by a group of passionate individuals who believed that real change starts at the community level.
                 </p>

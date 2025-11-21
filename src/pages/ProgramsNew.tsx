@@ -84,12 +84,12 @@ export default function Programs() {
             transition={{ duration: 0.7 }}
             className="max-w-4xl"
           >
-            <h1 className="text-white mb-6">
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
               Our Programs
               <br />
               <span className="text-secondary">Creating Impact</span>
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
               Focused initiatives across education, healthcare, and community development designed to create lasting change in Bangalore
             </p>
           </motion.div>
@@ -99,7 +99,7 @@ export default function Programs() {
       {/* Programs Grid */}
       <Section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-16">
             {programs.map((program, index) => (
               <motion.div
                 key={index}
@@ -107,13 +107,13 @@ export default function Programs() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
+                className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${
                   index % 2 === 1 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Image/Icon Side */}
                 <div className={`order-2 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <div className={`relative h-96 bg-gradient-to-br ${program.gradient} rounded-3xl overflow-hidden shadow-2xl`}>
+                  <div className={`relative h-64 sm:h-80 md:h-96 bg-gradient-to-br ${program.gradient} rounded-3xl overflow-hidden shadow-2xl`}>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <program.icon className="w-48 h-48 text-white/20" strokeWidth={1} />
                     </div>
@@ -122,16 +122,16 @@ export default function Programs() {
                       <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mb-4">
                         <program.icon className="w-12 h-12 text-foreground" strokeWidth={2} />
                       </div>
-                      <h3 className="text-3xl font-black text-white mb-2">{program.title}</h3>
-                      <p className="text-xl text-white/90 font-bold">{program.tagline}</p>
+                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">{program.title}</h3>
+                      <p className="text-lg sm:text-xl text-white/90 font-bold">{program.tagline}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Content Side */}
                 <div className={`order-1 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <h3 className="text-4xl font-black mb-6">{program.title}</h3>
-                  <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6">{program.title}</h3>
+                  <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8 leading-relaxed">
                     {program.description}
                   </p>
 
