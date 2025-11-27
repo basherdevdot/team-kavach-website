@@ -61,12 +61,12 @@ export default function About() {
   ];
 
   const milestones = [
-    { year: '2022', title: 'Founded', desc: 'Team Kavach established in Bangalore' },
-    { year: '2022', title: 'First Program', desc: 'Launched education support initiative' },
-    { year: '2023', title: '50 Volunteers', desc: 'Growing community of changemakers' },
-    { year: '2023', title: 'Healthcare', desc: 'Started free health camp program' },
-    { year: '2024', title: '1,000 Lives', desc: 'Reached 1,000+ lives impacted milestone' },
-    { year: '2025', title: '150 Volunteers', desc: 'Expanded team and programs' }
+    { year: '2019', title: 'Founded', desc: 'Team Kavach established with first Blanket Distribution Drive' },
+    { year: '2020', title: 'Environmental', desc: 'Started Plog Treks & Lake Cleaning initiatives' },
+    { year: '2021', title: 'Blood Donation', desc: 'Launched targeted blood donation camps' },
+    { year: '2022', title: 'Education', desc: 'Started teaching programs in government schools' },
+    { year: '2024', title: 'School Painting', desc: 'Renovated Government School with 80+ volunteers' },
+    { year: '2025', title: 'Notebook Drive', desc: 'Recycled 760+ notebooks with 480+ volunteers' }
   ];
 
   return (
@@ -84,7 +84,7 @@ export default function About() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
               <IconSparkles className="w-5 h-5" />
-              <span className="text-sm font-bold">Since 2022</span>
+              <span className="text-sm font-bold">Since 2019</span>
             </div>
             
             <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
@@ -107,16 +107,16 @@ export default function About() {
               <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">Who We Are</h2>
               <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-foreground/80 leading-relaxed">
                 <p>
-                  <strong className="text-foreground font-black">Team Kavach</strong> was founded in 2022 by a group of passionate individuals who believed that real change starts at the community level.
+                  <strong className="text-foreground font-black">Team Kavach</strong> was founded in 2019 by a group of friends united by a shared purpose. What began as a simple blanket distribution initiative has evolved into a wide-ranging effort to address diverse social and environmental needs.
                 </p>
                 <p>
-                  What began as a small group of volunteers organizing weekend education sessions has grown into a vibrant community of <strong className="text-primary font-black">150+ volunteers</strong> creating impact across Bangalore.
+                  At its core, <strong className="text-primary font-black">Kavach—meaning "shield"</strong>—embodies the spirit of protection. We devote our time, energy, and resources to support underprivileged communities, promote education, drive environmental conservation, and spread awareness.
                 </p>
                 <p>
-                  We focus on three core areas: <strong className="font-black">Education Support</strong>, <strong className="font-black">Healthcare Initiatives</strong>, and <strong className="font-black">Community Development</strong>—addressing the most pressing needs of underserved communities.
+                  Our belief is simple: <strong className="font-black">time is the most precious gift</strong>, and contributing it selflessly helps make the world a better, safer place.
                 </p>
                 <p>
-                  Today, we've impacted <strong className="text-primary font-black">2,000+ lives</strong> through 50+ events and programs, and we're just getting started.
+                  Today, we've distributed <strong className="text-primary font-black">1000+ blankets</strong>, collected <strong className="text-primary font-black">50,000+ ml blood</strong>, recycled <strong className="text-primary font-black">600+ kg plastic waste</strong>, and continue to be a protective shield for society's most vulnerable.
                 </p>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function About() {
           <IconQuote className="w-16 h-16 mx-auto mb-8 text-foreground/30" strokeWidth={1.5} />
           <h2 className="mb-8">Our Mission</h2>
           <p className="text-3xl md:text-4xl font-black leading-tight max-w-4xl mx-auto mb-12">
-            "To empower underserved communities in Bangalore through education, healthcare, and sustainable development initiatives, creating a more equitable and compassionate society."
+            "To safeguard those around us from various life challenges—Cold, Hunger, Illiteracy, Unemployment, Pollution, Infections, and Heat—by responding with compassion, innovation, and collective action."
           </p>
         </div>
       </Section>

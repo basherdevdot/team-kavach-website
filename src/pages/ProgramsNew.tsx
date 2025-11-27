@@ -35,39 +35,39 @@ export default function Programs() {
   const programs = [
     {
       icon: IconSchool,
-      title: 'Education Support',
+      title: 'Education & Youth Empowerment',
       tagline: 'Empowering Through Learning',
-      description: 'We provide quality education, mentorship, and learning resources to underprivileged children, helping them break the cycle of poverty through knowledge.',
-      impact: ['500+ students reached', '20+ schools partnered', '15+ volunteer teachers', 'Free study materials'],
+      description: 'From teaching Computer Science and English in government schools to distributing exam kits and recycling notebooks, we equip students with tools for success.',
+      impact: ['760+ notebooks recycled', '150+ exam kits distributed', '50+ teaching hours', 'School renovation projects'],
       color: 'bg-blue-500',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: IconMedicalCross,
-      title: 'Healthcare Initiatives',
-      tagline: 'Health is Wealth',
-      description: 'Free health camps, medical check-ups, and essential medicine distribution for communities who lack access to basic healthcare facilities.',
-      impact: ['30+ health camps', '1,000+ check-ups', '10+ partner hospitals', 'Free medicines'],
+      title: 'Health & Welfare Drives',
+      tagline: 'Caring for the Vulnerable',
+      description: 'Blood donation camps for thalassemia patients, sanitary kit distribution for BBMP women workers, and umbrella donations for street vendors during summer.',
+      impact: ['50,000+ ml blood collected', '400+ sanitary kits donated', '100+ umbrellas distributed', 'Targeted support drives'],
       color: 'bg-red-500',
       gradient: 'from-red-500 to-pink-500'
     },
     {
       icon: IconHeartHandshake,
-      title: 'Community Development',
-      tagline: 'Together We Grow',
-      description: 'Building stronger, self-sufficient communities through skill development, awareness programs, and sustainable livelihood initiatives.',
-      impact: ['15+ communities', '200+ families supported', 'Skill training programs', 'Awareness campaigns'],
-      color: 'bg-green-500',
-      gradient: 'from-green-500 to-emerald-500'
+      title: 'Winter Blanket Distribution',
+      tagline: 'Warmth for the Homeless',
+      description: 'Our flagship overnight annual drive since 2019—distributing blankets and food to homeless individuals across Bengaluru during peak winter.',
+      impact: ['1000+ blankets distributed', '500+ food packets', 'Annual overnight drives', 'Covering all of Bengaluru'],
+      color: 'bg-orange-500',
+      gradient: 'from-orange-500 to-amber-500'
     },
     {
       icon: IconUsers,
-      title: 'Elderly Care',
-      tagline: 'Honoring Our Elders',
-      description: 'Providing companionship, healthcare support, and recreational activities for senior citizens in old age homes and community centers.',
-      impact: ['300+ seniors supported', '5+ old age homes', 'Monthly visits', 'Healthcare assistance'],
-      color: 'bg-purple-500',
-      gradient: 'from-purple-500 to-violet-500'
+      title: 'Environmental Conservation',
+      tagline: 'Protecting Our Planet',
+      description: 'Plog Treks at Shivagange Hills, lake cleaning using natural bio-enzymes from vNurture initiative, and promoting eco-friendly practices.',
+      impact: ['600+ kg plastic cleaned', '4+ years of Plog Treks', 'Bio-enzyme lake cleaning', 'Zero-chemical approach'],
+      color: 'bg-green-500',
+      gradient: 'from-green-500 to-emerald-500'
     }
   ];
 

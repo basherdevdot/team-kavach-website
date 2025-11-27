@@ -39,44 +39,44 @@ const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({
 export default function Impact() {
   const stats = [
     { icon: IconUsers, value: '150+', label: 'Active Volunteers', color: 'text-blue-500' },
-    { icon: IconHeart, value: '2,000+', label: 'Lives Impacted', color: 'text-red-500' },
-    { icon: IconCalendar, value: '50+', label: 'Events Organized', color: 'text-green-500' },
-    { icon: IconMapPin, value: '1', label: 'City (Bangalore)', color: 'text-purple-500' },
-    { icon: IconSchool, value: '500+', label: 'Students Reached', color: 'text-blue-500' },
-    { icon: IconMedicalCross, value: '30+', label: 'Health Camps', color: 'text-red-500' },
+    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed', color: 'text-red-500' },
+    { icon: IconCalendar, value: '6+', label: 'Years of Service', color: 'text-green-500' },
+    { icon: IconMapPin, value: '500+', label: 'Food Packets Given', color: 'text-purple-500' },
+    { icon: IconSchool, value: '760+', label: 'Notebooks Recycled', color: 'text-blue-500' },
+    { icon: IconMedicalCross, value: '50L+', label: 'Blood Collected (ml)', color: 'text-red-500' },
   ];
 
   const programImpact = [
     {
       icon: IconSchool,
-      title: 'Education Impact',
+      title: 'Education & Youth Impact',
       stats: [
-        { label: 'Students reached', value: '500+' },
-        { label: 'Schools partnered', value: '20+' },
-        { label: 'Study hours provided', value: '5,000+' },
-        { label: 'Books distributed', value: '1,000+' }
+        { label: 'Notebooks recycled', value: '760+' },
+        { label: 'Exam kits distributed', value: '150+' },
+        { label: 'Teaching hours (CS & English)', value: '50+' },
+        { label: 'School renovations', value: '1' }
       ],
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: IconMedicalCross,
-      title: 'Healthcare Impact',
+      title: 'Health & Welfare Impact',
       stats: [
-        { label: 'Health camps conducted', value: '30+' },
-        { label: 'Free check-ups', value: '1,000+' },
-        { label: 'Medicines distributed', value: '500+' },
-        { label: 'Partner hospitals', value: '10+' }
+        { label: 'Blood collected (ml)', value: '50,000+' },
+        { label: 'Sanitary kits donated', value: '400+' },
+        { label: 'Blankets distributed', value: '1000+' },
+        { label: 'Umbrellas donated', value: '100+' }
       ],
       gradient: 'from-red-500 to-pink-500'
     },
     {
       icon: IconHeartHandshake,
-      title: 'Community Impact',
+      title: 'Environmental Impact',
       stats: [
-        { label: 'Communities served', value: '15+' },
-        { label: 'Families supported', value: '200+' },
-        { label: 'Skill training sessions', value: '25+' },
-        { label: 'Awareness programs', value: '15+' }
+        { label: 'Plastic waste cleaned (kg)', value: '600+' },
+        { label: 'Plog Treks conducted', value: '4+' },
+        { label: 'Lakes cleaned with bio-enzymes', value: '2+' },
+        { label: 'Food packets distributed', value: '500+' }
       ],
       gradient: 'from-green-500 to-emerald-500'
     }
@@ -118,7 +118,7 @@ export default function Impact() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
               <IconTrendingUp className="w-5 h-5" />
-              <span className="text-sm font-bold">Growing Impact Since 2022</span>
+              <span className="text-sm font-bold">Growing Impact Since 2019</span>
             </div>
             
             <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">

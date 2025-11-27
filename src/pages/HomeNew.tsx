@@ -65,32 +65,32 @@ export default function Home() {
 
   const stats = [
     { icon: IconUsers, value: '150+', label: 'Volunteers' },
-    { icon: IconHeart, value: '2,000+', label: 'Lives Impacted' },
-    { icon: IconCalendar, value: '50+', label: 'Events' },
+    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed' },
+    { icon: IconCalendar, value: '6+', label: 'Years of Impact' },
   ];
 
   const programs = [
     {
       icon: IconSchool,
       title: 'Education',
-      description: 'Quality education and mentorship for underprivileged children',
-      impact: '500+ students',
+      description: 'Teaching programs, exam kit distribution, and notebook recycling drives for government schools',
+      impact: '760+ notebooks recycled',
       color: 'bg-blue-500',
       image: '/images/programs/education.jpg'
     },
     {
       icon: IconMedicalCross,
       title: 'Healthcare',
-      description: 'Free health camps and medical assistance for communities',
-      impact: '30+ health camps',
+      description: 'Blood donation camps supporting thalassemia patients and sanitary kit distribution',
+      impact: '50,000+ ml blood collected',
       color: 'bg-red-500',
       image: '/images/programs/healthcare.jpg'
     },
     {
       icon: IconHeartHandshake,
-      title: 'Community',
-      description: 'Building stronger communities through social initiatives',
-      impact: '15+ communities',
+      title: 'Environment',
+      description: 'Plog Treks, lake cleaning with bio-enzymes, and umbrella distribution for street vendors',
+      impact: '600+ kg plastic cleaned',
       color: 'bg-green-500',
       image: '/images/programs/community.jpg'
     }
@@ -572,13 +572,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="flex-shrink-0 w-auto max-w-[500px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105"
+                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="bg-white">
                     <InstagramEmbed 
                       url={url} 
-                      width={Math.min(450, window.innerWidth - 40)}
-                      captioned={false}
+                      width="100%"
                     />
                   </div>
                 </motion.div>
