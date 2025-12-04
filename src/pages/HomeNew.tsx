@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { InstagramEmbed } from 'react-social-media-embed';
 import { 
   IconHeart, 
@@ -48,8 +48,9 @@ export default function Home() {
     offset: ['start start', 'end start']
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
+  // Using scroll progress for future parallax effects
+  useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
 
   // Rotating Slogans
   const slogans = [
@@ -114,336 +115,221 @@ export default function Home() {
     }
   ];
 
-  // Floating Impact Cards Data
-  const floatingCards = [
-    { value: '1000+', label: 'Blankets', delay: 0.3, position: 'top-[15%] right-[5%] lg:right-[8%]' },
-    { value: '150+', label: 'Volunteers', delay: 0.5, position: 'top-[45%] right-[2%] lg:right-[3%]' },
-    { value: '6+', label: 'Years', delay: 0.7, position: 'bottom-[25%] right-[8%] lg:right-[12%]' },
-  ];
+  // Animated Counter Hook
+  const useCounter = (end: number, duration: number = 2000) => {
+    const [count, setCount] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    
+    const startAnimation = () => {
+      if (hasAnimated) return;
+      setHasAnimated(true);
+      
+      let start = 0;
+      const increment = end / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+    };
+    
+    return { count, startAnimation };
+  };
+
+  const volunteersCounter = useCounter(150, 2000);
+  const blanketsCounter = useCounter(1000, 2500);
+  const yearsCounter = useCounter(6, 1500);
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Unique Asymmetric Split Design */}
+      {/* HERO SECTION - Bold Full-Screen Impact Design */}
       <motion.section
         ref={heroRef}
-        style={{ opacity, scale }}
-        className="relative min-h-screen overflow-hidden bg-[#fafafa]"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Animated Organic Blob Shapes */}
-        <motion.div
-          animate={{ 
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, 0],
-            x: [0, 20, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, -5, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-gradient-to-tl from-secondary/25 to-primary/15 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ 
-            scale: [1, 1.15, 1],
-            x: [0, -20, 0]
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute -bottom-32 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-accent/20 to-secondary/15 rounded-full blur-3xl"
-        />
-
-        {/* Main Content Grid */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen py-24 lg:py-0">
-            
-            {/* LEFT: Text Content */}
-            <div className="order-2 lg:order-1 text-center lg:text-left">
-              {/* Rotating Slogans */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="mb-6"
-              >
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg">
-                  <motion.div
-                    key={currentSlogan}
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex items-center gap-2"
-                  >
-                    {React.createElement(slogans[currentSlogan].icon, {
-                      className: `w-5 h-5 bg-gradient-to-r ${slogans[currentSlogan].color} text-white rounded-full p-0.5`
-                    })}
-                    <span className={`text-sm font-bold bg-gradient-to-r ${slogans[currentSlogan].color} bg-clip-text text-transparent`}>
-                      {slogans[currentSlogan].text}
-                    </span>
-                  </motion.div>
-                  <span className="text-xs text-foreground/40">•</span>
-                  <span className="text-xs font-medium text-foreground/60">Since 2019</span>
-                </div>
-                {/* Slogan Progress Dots */}
-                <div className="flex gap-1.5 mt-3 justify-center lg:justify-start">
-                  {slogans.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentSlogan(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        idx === currentSlogan 
-                          ? 'w-6 bg-gradient-to-r from-primary to-secondary' 
-                          : 'w-1.5 bg-gray-300 hover:bg-gray-400'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Stacked Headline with Unique Typography */}
-              <div className="space-y-2 mb-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 40, rotateX: -20 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-none">
-                    Small Acts,
-                  </span>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 40, rotateX: -20 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ duration: 0.7, delay: 0.45 }}
-                  className="overflow-hidden"
-                >
-                  <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none">
-                    <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                      Big Impact
-                    </span>
-                  </span>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 40, rotateX: -20 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ duration: 0.7, delay: 0.6 }}
-                  className="overflow-hidden"
-                >
-                  <span className="block text-2xl sm:text-3xl md:text-4xl font-bold text-foreground/60 leading-tight">
-                    in Bangalore
-                  </span>
-                </motion.div>
-              </div>
-
-              {/* Description with Line Accent */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.75 }}
-                className="relative mb-10"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary rounded-full hidden lg:block" />
-                <p className="text-lg md:text-xl text-foreground/70 max-w-xl lg:pl-6 leading-relaxed">
-                  Join 150+ passionate volunteers creating change through education, healthcare, and community initiatives.
-                </p>
-              </motion.div>
-
-              {/* CTA Group with Unique Style */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.9 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
-                <Button asChild size="lg" className="group relative h-14 px-8 text-lg font-bold overflow-hidden">
-                  <Link to="/get-involved">
-                    <span className="relative z-10 flex items-center gap-2">
-                      Become a Volunteer
-                      <motion.span
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        <IconArrowRight className="w-5 h-5" />
-                      </motion.span>
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-shimmer" />
-                  </Link>
-                </Button>
-                <Button 
-                  asChild 
-                  size="lg" 
-                  variant="outline" 
-                  className="h-14 px-8 text-lg font-bold border-2 border-foreground/20 hover:border-primary hover:text-primary transition-all duration-300"
-                >
-                  <Link to="/programs">Our Programs</Link>
-                </Button>
-              </motion.div>
-
-              {/* Trust Indicators */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 1.1 }}
-                className="mt-12 flex items-center gap-6 justify-center lg:justify-start"
-              >
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div 
-                      key={i} 
-                      className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/80 to-secondary/80 border-2 border-white flex items-center justify-center"
-                    >
-                      <IconUsers className="w-5 h-5 text-white" />
-                    </div>
-                  ))}
-                </div>
-                <div className="text-sm">
-                  <span className="font-bold text-foreground">150+ volunteers</span>
-                  <span className="text-foreground/60"> making a difference</span>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* RIGHT: Visual Element - Image Collage with Floating Cards */}
-            <div className="order-1 lg:order-2 relative">
-              {/* Main Hero Image Container */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative"
-              >
-                {/* Decorative Frame */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 rounded-[2rem] blur-xl" />
-                
-                {/* Main Image */}
-                <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 border border-white/50 shadow-2xl">
-                  <img 
-                    src="/images/kavachGroup.jpg" 
-                    alt="Team Kavach Volunteers"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  {/* Gradient Overlay on Image */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
-                  
-                  {/* Fallback Pattern */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="w-32 h-32 rounded-full border-4 border-dashed border-primary/30 flex items-center justify-center mb-6"
-                    >
-                      <IconHeart className="w-16 h-16 text-primary/50" />
-                    </motion.div>
-                    <p className="text-foreground/50 font-medium">Add hero image</p>
-                    <p className="text-sm text-foreground/30">hero-volunteers.jpg</p>
-                  </div>
-                </div>
-
-                {/* Floating Accent Card - Bottom Left */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30, y: 30 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="absolute -bottom-6 -left-6 sm:bottom-8 sm:-left-8 z-20"
-                >
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/50"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                        <IconCircleCheck className="w-7 h-7 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-black text-foreground">50,000+</p>
-                        <p className="text-sm text-foreground/60 font-medium">ml Blood Donated</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Floating Impact Cards */}
-              {floatingCards.map((card, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: card.delay + 0.6 }}
-                  className={`absolute ${card.position} z-20 hidden lg:block`}
-                >
-                  <motion.div
-                    animate={{ 
-                      y: [0, -10, 0],
-                      rotate: [0, index % 2 === 0 ? 2 : -2, 0]
-                    }}
-                    transition={{ 
-                      duration: 3 + index, 
-                      repeat: Infinity, 
-                      ease: "easeInOut",
-                      delay: index * 0.5
-                    }}
-                    className="bg-white/80 backdrop-blur-xl rounded-xl p-3 sm:p-4 shadow-xl border border-white/50 hover:scale-110 transition-transform cursor-default"
-                  >
-                    <p className="text-xl sm:text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      {card.value}
-                    </p>
-                    <p className="text-xs font-medium text-foreground/60">{card.label}</p>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="/images/kavachGroup.jpg" 
+            alt="Team Kavach"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+          {/* Color Accent Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accent/20" />
         </div>
 
-        {/* Bottom Wave Divider */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path 
-              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" 
-              fill="white"
-            />
-          </svg>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{ y: [0, -20, 0], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{ y: [0, 20, 0], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
+          />
         </div>
-      </motion.section>
 
-      {/* Stats Section */}
-      <Section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+        {/* Main Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Small Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-6"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              Bangalore's Youth-Led NGO Since 2019
+            </span>
+          </motion.div>
+
+          {/* Main Headline - Rotating Taglines */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative min-h-[140px] sm:min-h-[160px] md:min-h-[200px] lg:min-h-[240px] flex items-center justify-center mb-6"
+          >
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={currentSlogan}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -40, scale: 0.95 }}
+                transition={{ 
+                  duration: 0.5, 
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent pb-4 leading-normal text-center px-4"
               >
-                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <stat.icon className="w-10 h-10 text-primary" strokeWidth={2} />
-                </div>
-                <div className="text-6xl md:text-7xl font-black text-primary mb-3">
-                  {stat.value}
-                </div>
-                <div className="text-xl font-bold text-foreground/70">
-                  {stat.label}
-                </div>
-              </motion.div>
+                {slogans[currentSlogan].text}
+              </motion.h1>
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Slogan Indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex gap-2 justify-center mb-8"
+          >
+            {slogans.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlogan(idx)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  idx === currentSlogan 
+                    ? 'w-10 bg-primary' 
+                    : 'w-2 bg-white/30 hover:bg-white/50'
+                }`}
+              />
             ))}
-          </div>
+          </motion.div>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
+          >
+            Join 150+ volunteers in Bangalore transforming lives through education, healthcare, and community action.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          >
+            <Button asChild size="lg" className="h-14 px-10 text-lg font-bold bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/30">
+              <Link to="/get-involved">
+                Join The Movement
+                <IconArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button 
+              asChild 
+              size="lg" 
+              variant="outline" 
+              className="h-14 px-10 text-lg font-bold border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-foreground"
+            >
+              <Link to="/programs">See Our Work</Link>
+            </Button>
+          </motion.div>
+
+          {/* Live Stats Counter */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            onViewportEnter={() => {
+              volunteersCounter.startAnimation();
+              blanketsCounter.startAnimation();
+              yearsCounter.startAnimation();
+            }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
+          >
+            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+                {volunteersCounter.count}+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Volunteers</div>
+            </div>
+            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+                {blanketsCounter.count}+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Blankets</div>
+            </div>
+            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+                {yearsCounter.count}+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Years</div>
+            </div>
+          </motion.div>
         </div>
-      </Section>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="flex flex-col items-center gap-2 text-white/50"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest">Scroll</span>
+            <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center pt-1">
+              <motion.div
+                animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-1 h-2 bg-white/60 rounded-full"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* Upcoming Event Section - Professional Layout */}
       <Section className="py-24 bg-gradient-to-br from-white via-primary/5 to-secondary/10">
