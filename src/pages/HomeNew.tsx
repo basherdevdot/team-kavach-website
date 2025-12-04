@@ -324,7 +324,7 @@ export default function Home() {
                 {/* Main Image */}
                 <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 border border-white/50 shadow-2xl">
                   <img 
-                    src="/images/hero-volunteers.jpg" 
+                    src="/images/kavachGroup.jpg" 
                     alt="Team Kavach Volunteers"
                     className="w-full h-full object-cover"
                     onError={(e) => {
