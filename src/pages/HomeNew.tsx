@@ -108,7 +108,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{
-            backgroundImage: "url('/images/hero-volunteers.jpg')",
+            backgroundImage: "url('/images/kavachGroup.jpg')",
             backgroundPosition: 'center',
           }}
         />
@@ -128,7 +128,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white mb-8"
           >
             <IconSparkles className="w-5 h-5" />
-            <span className="text-sm font-bold">Building Communities Since 2022</span>
+            <span className="text-sm font-bold">Building Communities Since 2019</span>
           </motion.div>
 
           {/* Main Headline */}
