@@ -176,10 +176,10 @@ export default function GetInvolved() {
                       {option.description}
                     </p>
 
-                    <div className="mb-6">
+                    {/* <div className="mb-6">
                       <div className="text-sm font-bold text-primary mb-2">TIME COMMITMENT</div>
                       <div className="text-lg font-black">{option.commitment}</div>
-                    </div>
+                    </div> */}
 
                     <div className="space-y-2 mb-6">
                       {option.benefits.map((benefit, i) => (

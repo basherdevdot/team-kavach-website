@@ -180,31 +180,95 @@ export default function About() {
         </div>
       </Section>
 
-      {/* Our Journey */}
+      {/* Our Journey - Professional Timeline */}
       <Section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
           <div className="text-center mb-16">
             <h2 className="mb-4">Our Journey</h2>
-            <p className="text-xl text-foreground/70">Key milestones in our growth</p>
+            <p className="text-xl text-foreground/60">Key milestones in our growth</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {milestones.map((milestone, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="bg-primary/5 rounded-2xl p-8 border-2 border-primary/10 hover:border-primary/30 transition-all">
-                  <div className="text-5xl font-black text-primary mb-4">{milestone.year}</div>
-                  <h3 className="text-xl font-black mb-2">{milestone.title}</h3>
-                  <p className="text-foreground/70">{milestone.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical Line - Center on desktop, left on mobile */}
+            <div className="absolute left-[18px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-primary/20" />
+
+            {/* Timeline Items */}
+            <div className="space-y-6 md:space-y-0">
+              {milestones.map((milestone, index) => {
+                const isLeft = index % 2 === 0;
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="relative md:py-6"
+                  >
+                    {/* Desktop Layout */}
+                    <div className="hidden md:block">
+                      <div className={`flex items-center ${isLeft ? '' : 'flex-row-reverse'}`}>
+                        {/* Card */}
+                        <div className={`w-[calc(50%-24px)] ${isLeft ? 'pr-0' : 'pl-0'}`}>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            className={`bg-primary/5 rounded-xl p-6 hover:bg-primary/10 transition-colors ${isLeft ? 'ml-auto mr-0' : 'mr-auto ml-0'}`}
+                            style={{ maxWidth: '380px' }}
+                          >
+                            <div className="text-4xl font-black text-primary mb-2">{milestone.year}</div>
+                            <h3 className="text-xl font-bold text-foreground mb-1">{milestone.title}</h3>
+                            <p className="text-foreground/60 text-sm">{milestone.desc}</p>
+                          </motion.div>
+                        </div>
+                        
+                        {/* Node */}
+                        <div className="w-12 flex justify-center relative z-10">
+                          <div className="w-3 h-3 rounded-full bg-primary shadow-sm" />
+                        </div>
+                        
+                        {/* Empty space for other side */}
+                        <div className="w-[calc(50%-24px)]" />
+                      </div>
+                    </div>
+
+                    {/* Mobile Layout */}
+                    <div className="md:hidden flex items-start gap-5">
+                      {/* Node */}
+                      <div className="relative z-10 flex-shrink-0 mt-2">
+                        <div className="w-3 h-3 rounded-full bg-primary shadow-sm" />
+                      </div>
+                      
+                      {/* Card */}
+                      <div className="flex-1 bg-primary/5 rounded-xl p-4">
+                        <div className="text-2xl font-black text-primary mb-1">{milestone.year}</div>
+                        <h3 className="text-lg font-bold text-foreground mb-1">{milestone.title}</h3>
+                        <p className="text-foreground/60 text-sm">{milestone.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* End Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex items-center mt-8 md:justify-center pl-1 md:pl-0"
+            >
+              <div className="flex items-center gap-2 text-foreground/50">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-2 h-2 bg-primary rounded-full"
+                />
+                <span className="text-sm font-medium">The journey continues...</span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </Section>
