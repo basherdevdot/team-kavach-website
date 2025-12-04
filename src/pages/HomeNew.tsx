@@ -82,12 +82,6 @@ export default function Home() {
       .catch(err => console.error('Error loading events:', err));
   }, []);
 
-  const stats = [
-    { icon: IconUsers, value: '150+', label: 'Volunteers' },
-    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed' },
-    { icon: IconCalendar, value: '6+', label: 'Years of Impact' },
-  ];
-
   const programs = [
     {
       icon: IconSchool,
