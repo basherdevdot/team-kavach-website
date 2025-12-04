@@ -23,7 +23,7 @@ const supportLinks = [
 const socialLinks = [
   // { name: 'Facebook', icon: IconBrandFacebook, url: 'https://facebook.com' },
   { name: 'Instagram', icon: IconBrandInstagram, url: 'https://www.instagram.com/teamkavach/' },
-  { name: 'LinkedIn', icon: IconBrandLinkedin, url: 'https://www.linkedin.com/company/team-kavach/' },
+  { name: 'LinkedIn', icon: IconBrandLinkedin, url: 'https://www.linkedin.com/in/team-kavach-a919b8301/' },
   // { name: 'Twitter', icon: IconBrandTwitter, url: 'https://twitter.com' },
   { name: 'YouTube', icon: IconBrandYoutube, url: 'https://www.youtube.com/@TeamKavach' },
 ];
@@ -60,14 +60,13 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-white/70 mb-8 max-w-md leading-relaxed text-base">
-              Shielding vulnerable lives, one volunteer at a time. Join our community
-              of passionate volunteers making a meaningful impact in Bangalore.
+              Sharing Warmth, Nurturing Dreams, Creating a Better Tomorrow.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
                 <IconMail className="w-5 h-5" strokeWidth={2} />
-                <a href="mailto:teamkavach1@gmail.com" className="font-medium">
-                  teamkavach1@gmail.com
+                <a href="mailto:kavachtrust@gmail.com" className="font-medium">
+                  kavachtrust@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
