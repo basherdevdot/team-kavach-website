@@ -2,14 +2,26 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PageHeader } from '../components/PageHeader';
 import { Button } from '@/components/ui/button';
-import { Heart, Copy, Check, Smartphone } from 'lucide-react';
+import { Heart, Copy, Check, Smartphone, CreditCard } from 'lucide-react';
+
+// Razorpay Types
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const Donate: React.FC = () => {
   const [copiedUPI, setCopiedUPI] = useState(false);
   const [copiedAccount, setCopiedAccount] = useState(false);
+  const [donationAmount, setDonationAmount] = useState<number>(250);
+  const [customAmount, setCustomAmount] = useState<string>('');
 
   const UPI_ID = "teamkavach@ybl";
   const PHONEPE = "+91 9611438065";
+
+  // Razorpay Test Key (Replace with your own key)
+  const RAZORPAY_KEY = "rzp_test_xxxxxxxxxxxxxx"; // Get from https://dashboard.razorpay.com/
 
   const copyToClipboard = (text: string, type: 'upi' | 'account') => {
     navigator.clipboard.writeText(text);
@@ -21,6 +33,72 @@ const Donate: React.FC = () => {
       setTimeout(() => setCopiedAccount(false), 2000);
     }
   };
+
+  // Load Razorpay script
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  // Handle Razorpay Payment
+  const handleRazorpayPayment = async () => {
+    const res = await loadRazorpayScript();
+
+    if (!res) {
+      alert('Razorpay SDK failed to load. Please check your internet connection.');
+      return;
+    }
+
+    const amount = customAmount ? parseInt(customAmount) : donationAmount;
+
+    if (!amount || amount < 1) {
+      alert('Please enter a valid amount');
+      return;
+    }
+
+    const options = {
+      key: RAZORPAY_KEY, // Enter your Razorpay Key ID
+      amount: amount * 100, // Amount in paise (₹250 = 25000 paise)
+      currency: 'INR',
+      name: 'Team Kavach',
+      description: 'Mission Winter Relief - Donation',
+      image: '/logo.png', // Your logo
+      handler: function (response: any) {
+        // Payment success
+        alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+        console.log('Payment Response:', response);
+        // Here you can send the payment details to your backend
+        // Send confirmation email, generate receipt, etc.
+      },
+      prefill: {
+        name: '',
+        email: '',
+        contact: ''
+      },
+      notes: {
+        campaign: 'Winter Relief',
+        purpose: 'Blanket and Food Distribution'
+      },
+      theme: {
+        color: '#0066CC' // Your brand color
+      },
+      modal: {
+        ondismiss: function() {
+          console.log('Payment cancelled by user');
+        }
+      }
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const quickAmounts = [250, 500, 1000, 2500, 5000];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-primary/5">
@@ -65,7 +143,87 @@ const Donate: React.FC = () => {
           </motion.div>
 
           {/* Payment Methods */}
-          <div className="max-w-2xl mx-auto mb-12">
+          <div className="max-w-2xl mx-auto mb-12 space-y-8">
+            {/* Razorpay Payment Gateway */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8 shadow-xl border-2 border-primary/30 hover:border-primary/60 transition-all">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <CreditCard className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-foreground mb-2">Pay Online</h3>
+                  <p className="text-sm sm:text-base text-foreground/60 font-semibold">Cards, UPI, NetBanking & More</p>
+                </div>
+
+                {/* Quick Amount Selection */}
+                <div className="mb-6">
+                  <p className="text-sm font-bold text-foreground/70 mb-3 text-center">Quick Select Amount</p>
+                  <div className="grid grid-cols-3 gap-3">
+                    {quickAmounts.map((amount) => (
+                      <button
+                        key={amount}
+                        onClick={() => {
+                          setDonationAmount(amount);
+                          setCustomAmount('');
+                        }}
+                        className={`py-3 px-4 rounded-xl font-bold transition-all ${
+                          donationAmount === amount && !customAmount
+                            ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105'
+                            : 'bg-white border-2 border-primary/30 text-foreground hover:border-primary hover:scale-105'
+                        }`}
+                      >
+                        ₹{amount}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Custom Amount Input */}
+                <div className="mb-6">
+                  <p className="text-sm font-bold text-foreground/70 mb-3 text-center">Or Enter Custom Amount</p>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl font-bold text-foreground/70">₹</span>
+                    <input
+                      type="number"
+                      value={customAmount}
+                      onChange={(e) => setCustomAmount(e.target.value)}
+                      placeholder="Enter amount"
+                      className="w-full py-3 pl-10 pr-4 text-lg font-bold border-2 border-primary/30 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      min="1"
+                    />
+                  </div>
+                </div>
+
+                {/* Pay Now Button */}
+                <Button
+                  onClick={handleRazorpayPayment}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-lg py-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  <CreditCard className="w-5 h-5 mr-2" />
+                  Pay ₹{customAmount || donationAmount} Now
+                </Button>
+
+                <div className="mt-4 text-center text-xs text-foreground/60">
+                  <p className="font-semibold">🔒 Secure payment powered by Razorpay</p>
+                  <p className="mt-1">Accepts all major cards, UPI, wallets & net banking</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t-2 border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-4 bg-gradient-to-br from-white via-gray-50 to-primary/5 text-foreground/70 font-bold">OR</span>
+              </div>
+            </div>
+
             {/* UPI Card - Centered */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

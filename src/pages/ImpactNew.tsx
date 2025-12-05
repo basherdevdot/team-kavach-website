@@ -51,7 +51,7 @@ export default function Impact() {
       icon: IconSchool,
       title: 'Education & Youth Impact',
       stats: [
-        { label: 'Notebooks recycled', value: '760+' },
+        { label: 'Notebooks recycled', value: '1700+' },
         { label: 'Exam kits distributed', value: '150+' },
         { label: 'Teaching hours (CS & English)', value: '50+' },
         { label: 'School renovations', value: '1' }
