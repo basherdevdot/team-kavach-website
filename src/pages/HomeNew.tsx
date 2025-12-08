@@ -140,7 +140,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* HERO SECTION - Bold Full-Screen Impact Design */}
+      {/* HERO SECTION - Refined Full-Screen Design */}
       <motion.section
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -150,86 +150,71 @@ export default function Home() {
           <img 
             src="/images/kavachGroup.jpg" 
             alt="Team Kavach"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
           />
-          {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-          {/* Color Accent Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accent/20" />
-        </div>
-
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{ y: [0, -20, 0], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ y: [0, 20, 0], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
-          />
+          {/* Refined Dark Overlay - Better contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+          {/* Subtle Color Accent */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent" />
         </div>
 
         {/* Main Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 flex flex-col justify-center min-h-screen">
           {/* Small Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6"
+            className="mb-6 sm:mb-8"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold">
+            <span className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-medium">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               Bangalore's Youth-Led NGO Since 2019
             </span>
           </motion.div>
 
           {/* Main Headline - Rotating Taglines */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative min-h-[140px] sm:min-h-[160px] md:min-h-[200px] lg:min-h-[240px] flex items-center justify-center mb-6"
-          >
-            <AnimatePresence mode="wait">
+          <div className="mb-4 sm:mb-6 relative min-h-[1.2em]" style={{ minHeight: 'clamp(2.5rem, 10vw, 6rem)' }}>
+            <AnimatePresence mode="wait" initial={false}>
               <motion.h1
-                key={currentSlogan}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -40, scale: 0.95 }}
+                key={`slogan-${currentSlogan}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ 
                   duration: 0.5, 
-                  ease: [0.22, 1, 0.36, 1]
+                  ease: "easeInOut"
                 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-white via-secondary to-white bg-clip-text text-transparent pb-4 leading-normal text-center px-4"
+                style={{ fontSize: 'clamp(2rem, 8vw, 5rem)' }}
+                className="font-black text-white leading-[1.1] tracking-tight"
               >
-                {slogans[currentSlogan].text}
+                <span className="bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent">
+                  {slogans[currentSlogan].text}
+                </span>
               </motion.h1>
             </AnimatePresence>
-          </motion.div>
+          </div>
 
           {/* Slogan Indicators */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="flex gap-2 justify-center mb-8"
+            className="flex gap-2 sm:gap-3 justify-center mb-6 sm:mb-8"
           >
-            {slogans.map((_, idx) => (
+            {slogans.map((slogan, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentSlogan(idx)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
+                className={`relative h-1.5 sm:h-2 rounded-full transition-all duration-500 ${
                   idx === currentSlogan 
-                    ? 'w-10 bg-primary' 
-                    : 'w-2 bg-white/30 hover:bg-white/50'
+                    ? 'w-8 sm:w-12 bg-white' 
+                    : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/60'
                 }`}
+                aria-label={slogan.text}
               />
             ))}
           </motion.div>
@@ -238,30 +223,31 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)' }}
+            className="text-white/70 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-medium px-2"
           >
-            Join 150+ volunteers in Bangalore transforming lives through education, healthcare, and community action.
+            Join 150+ volunteers transforming lives through education, healthcare, and community action.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16"
           >
-            <Button asChild size="lg" className="h-14 px-10 text-lg font-bold bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/30">
+            <Button asChild size="lg" className="h-11 sm:h-14 px-6 sm:px-10 text-sm sm:text-lg font-bold bg-primary hover:bg-primary/90 shadow-xl shadow-primary/25 transition-all hover:scale-105">
               <Link to="/get-involved">
                 Join The Movement
-                <IconArrowRight className="w-5 h-5 ml-2" />
+                <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Link>
             </Button>
             <Button 
               asChild 
               size="lg" 
               variant="outline" 
-              className="h-14 px-10 text-lg font-bold border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-foreground"
+              className="h-11 sm:h-14 px-6 sm:px-10 text-sm sm:text-lg font-bold border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 transition-all hover:scale-105"
             >
               <Link to="/programs">See Our Work</Link>
             </Button>
@@ -270,55 +256,54 @@ export default function Home() {
           {/* Live Stats Counter */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             onViewportEnter={() => {
               volunteersCounter.startAnimation();
               blanketsCounter.startAnimation();
               yearsCounter.startAnimation();
             }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 max-w-md sm:max-w-lg md:max-w-xl mx-auto"
           >
-            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+            <div className="text-center p-2 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/15 transition-colors">
+              <div style={{ fontSize: 'clamp(1.25rem, 4vw, 2.5rem)' }} className="font-black text-white">
                 {volunteersCounter.count}+
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Volunteers</div>
+              <div className="text-[9px] sm:text-[10px] md:text-xs font-semibold text-white/50 uppercase tracking-wider mt-0.5 sm:mt-1">Volunteers</div>
             </div>
-            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+            <div className="text-center p-2 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/15 transition-colors">
+              <div style={{ fontSize: 'clamp(1.25rem, 4vw, 2.5rem)' }} className="font-black text-white">
                 {blanketsCounter.count}+
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Blankets</div>
+              <div className="text-[9px] sm:text-[10px] md:text-xs font-semibold text-white/50 uppercase tracking-wider mt-0.5 sm:mt-1">Blankets</div>
             </div>
-            <div className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1">
+            <div className="text-center p-2 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/15 transition-colors">
+              <div style={{ fontSize: 'clamp(1.25rem, 4vw, 2.5rem)' }} className="font-black text-white">
                 {yearsCounter.count}+
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wider">Years</div>
+              <div className="text-[9px] sm:text-[10px] md:text-xs font-semibold text-white/50 uppercase tracking-wider mt-0.5 sm:mt-1">Years</div>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Simplified */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          transition={{ delay: 1.2 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-white/50"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-1"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest">Scroll</span>
-            <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center pt-1">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <motion.div
-                animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1 h-2 bg-white/60 rounded-full"
+                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-1.5 h-1.5 bg-white/70 rounded-full"
               />
             </div>
           </motion.div>
