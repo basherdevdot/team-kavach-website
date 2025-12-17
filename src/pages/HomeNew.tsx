@@ -72,7 +72,7 @@ export default function Home() {
   const [instagramUrls, setInstagramUrls] = useState<string[]>([]);
 
   useEffect(() => {
-    // Fetch events data
+    // Fetch events data and instagram url from events.json file not dynamic 
     fetch('/data/events.json')
       .then(res => res.json())
       .then(data => {
