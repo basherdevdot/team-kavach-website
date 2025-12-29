@@ -6,8 +6,8 @@ import {
   IconMedicalCross,
   IconHeartHandshake,
   IconUsers,
-  IconArrowRight,
-  IconCircleCheck
+  IconCircleCheck,
+  IconTrophy
 } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 
@@ -38,7 +38,7 @@ export default function Programs() {
       title: 'Education & Youth Empowerment',
       tagline: 'Empowering Through Learning',
       description: 'From teaching Computer Science and English in government schools to distributing exam kits and recycling notebooks, we equip students with tools for success.',
-      impact: ['760+ notebooks recycled', '150+ exam kits distributed', '50+ teaching hours', 'School renovation projects'],
+      impact: ['3000+ notebooks recycled', '1700 recycled books distributed', '150+ exam kits distributed', '50+ teaching hours', 'Rural school rejuvenation project', 'Career counselling and soft skill training to govt schools and colleges'],
       color: 'bg-blue-500',
       gradient: 'from-blue-500 to-cyan-500'
     },
@@ -47,7 +47,7 @@ export default function Programs() {
       title: 'Health & Welfare Drives',
       tagline: 'Caring for the Vulnerable',
       description: 'Blood donation camps for thalassemia patients, sanitary kit distribution for BBMP women workers, and umbrella donations for street vendors during summer.',
-      impact: ['50,000+ ml blood collected', '400+ sanitary kits donated', '100+ umbrellas distributed', 'Targeted support drives'],
+      impact: ['50,000+ ml blood collected', '400+ sanitary kits donated', '50+ umbrellas distributed','Engagement with Thalassemia Child Care Center', 'Medication support to pediatric cancer patients at the Indira Gandhi Institute of Child Health'],
       color: 'bg-red-500',
       gradient: 'from-red-500 to-pink-500'
     },
@@ -65,9 +65,18 @@ export default function Programs() {
       title: 'Environmental Conservation',
       tagline: 'Protecting Our Planet',
       description: 'Plog Treks at Shivagange Hills, lake cleaning using natural bio-enzymes from vNurture initiative, and promoting eco-friendly practices.',
-      impact: ['600+ kg plastic cleaned', '4+ years of Plog Treks', 'Bio-enzyme lake cleaning', 'Zero-chemical approach'],
+      impact: ['600+ kg plastic cleaned', '4+ years of Plog Treks', 'Bio-enzyme lake cleaning', 'Zero-chemical approach', 'Mango Seed Collection and Plantation Drive'],
       color: 'bg-green-500',
       gradient: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: IconTrophy,
+      title: 'Sports and Cultural Engagement',
+      tagline: 'Building Community Spirit',
+      description: 'Organizing sports events and cultural programs in underprivileged communities to foster teamwork, confidence, and joy among youth.',
+      impact: ["Led badminton tournament to fund rural school sports equipment.", "Organized annual sports-cultural meet at Govt Higher Primary School, Magadi Road.", "Co-organized sports day at MEG School, Bangalore.", "Conducted yoga sessions in govt schools."],
+      color: 'bg-purple-500',
+      gradient: 'from-purple-500 to-fuchsia-500'
     }
   ];
 
@@ -138,21 +147,14 @@ export default function Programs() {
                   {/* Impact Stats */}
                   <div className="space-y-3 mb-8">
                     {program.impact.map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className={`w-6 h-6 ${program.color} rounded-full flex items-center justify-center`}>
+                      <div key={i} className="flex items-start gap-3">
+                        <div className={`w-6 h-6 flex-shrink-0 ${program.color} rounded-full flex items-center justify-center`}>
                           <IconCircleCheck className="w-4 h-4 text-white" strokeWidth={3} />
                         </div>
                         <span className="text-lg font-bold text-foreground">{item}</span>
                       </div>
                     ))}
                   </div>
-
-                  <Button asChild size="lg" className="font-bold">
-                    <Link to="/get-involved">
-                      Join This Program
-                      <IconArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
                 </div>
               </motion.div>
             ))}
