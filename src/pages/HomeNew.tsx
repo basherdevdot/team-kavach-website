@@ -478,7 +478,7 @@ export default function Home() {
       </Section>
 
       {/* What We Do - Bold Statement */}
-      <Section className="py-32 bg-primary text-white relative overflow-hidden">
+      <Section className="py-32 bg-[#DB143C] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -695,7 +695,7 @@ export default function Home() {
       </Section>
 
       {/* Final CTA */}
-      <Section className="py-20 bg-primary text-white">
+      <Section className="py-20 bg-[#DB143C] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <IconHeart className="w-16 h-16 mx-auto mb-6" strokeWidth={1.5} />
           <h2 className="text-white mb-6">

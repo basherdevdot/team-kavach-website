@@ -83,7 +83,7 @@ export default function Programs() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white overflow-hidden">
+      <section className="relative py-32 bg-[#DB143C] text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,7 +163,7 @@ export default function Programs() {
       </Section>
 
       {/* CTA Section */}
-      <Section className="py-20 bg-primary text-white">
+      <Section className="py-20 bg-[#DB143C] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-white mb-6">
             Ready to Make
