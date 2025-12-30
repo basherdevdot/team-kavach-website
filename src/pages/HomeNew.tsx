@@ -55,7 +55,7 @@ export default function Home() {
   // Rotating Slogans
   const slogans = [
     { text: 'Sharing Warmth', icon: IconFlame, color: 'from-orange-500 to-red-500' },
-    { text: 'Nurturing Dreams', icon: IconStar, color: 'from-purple-500 to-pink-500' },
+    { text: 'Nurturing Dreams', icon: IconStar, color: 'from-purple-600 to-red-900' },
     { text: 'Creating a Better Tomorrow', icon: IconSunrise, color: 'from-yellow-500 to-orange-500' },
   ];
   const [currentSlogan, setCurrentSlogan] = useState(0);
@@ -324,7 +324,7 @@ export default function Home() {
               <IconCalendar className="w-5 h-5" />
               <span className="font-black">UPCOMING EVENT</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-to-r from-purple-600 via-red-800 to-amber-600 bg-clip-text text-transparent">
               Join Our Next Event
             </h2>
             <p className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto">
@@ -577,7 +577,7 @@ export default function Home() {
       {/* Volunteer CTA - Split Section */}
       <Section className="relative overflow-hidden">
         <div className="grid md:grid-cols-2">
-          <div className="relative h-96 md:h-auto bg-gradient-to-br from-secondary to-accent overflow-hidden">
+          <div className="relative h-96 md:h-auto bg-gradient-to-br from-red-900 to-red-700 overflow-hidden">
             {/* Volunteer Photo */}
             <img 
               src="/images/volunteers/team-action.jpg" 
@@ -588,10 +588,10 @@ export default function Home() {
                 e.currentTarget.style.display = 'none';
               }}
             />
-            <div className="absolute inset-0 flex items-center justify-center p-12 bg-gradient-to-br from-secondary/80 to-accent/80">
+            <div className="absolute inset-0 flex items-center justify-center p-12 bg-gradient-to-br from-red-900/90 to-red-700/90">
               <div className="text-center text-white">
                 <IconUsers className="w-32 h-32 mx-auto mb-6 opacity-90" strokeWidth={1.5} />
-                <p className="text-3xl font-black">Join Our Community</p>
+                <p className="text-3xl font-black text-white drop-shadow-lg">Join Our Community</p>
               </div>
             </div>
           </div>
@@ -618,7 +618,7 @@ export default function Home() {
       </Section>
 
       {/* Instagram Gallery - Horizontal Scrolling Carousel */}
-      <Section className="py-24 bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 text-white overflow-hidden">
+      <Section className="py-24 bg-gradient-to-br from-red-900 via-red-800 to-red-700 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="text-center">
             <motion.div
@@ -645,8 +645,8 @@ export default function Home() {
         {/* Horizontal Scrolling Container */}
         <div className="relative">
           {/* Gradient Overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-purple-600 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-red-500 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-red-900 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-red-700 to-transparent z-10 pointer-events-none" />
           
           {/* Scrollable Instagram Feed */}
           <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">

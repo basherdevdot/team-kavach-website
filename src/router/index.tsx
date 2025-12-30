@@ -8,6 +8,7 @@ const ProgramsNew = React.lazy(() => import('../pages/ProgramsNew'));
 const GetInvolvedNew = React.lazy(() => import('../pages/GetInvolvedNew'));
 const AboutNew = React.lazy(() => import('../pages/AboutNew'));
 const ImpactNew = React.lazy(() => import('../pages/ImpactNew'));
+const Gallery = React.lazy(() => import('../pages/Gallery'));
 const Donate = React.lazy(() => import('../pages/Donate'));
 const Stories = React.lazy(() => import('../pages/Stories'));
 const StoryDetail = React.lazy(() => import('../pages/StoryDetail'));
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: '/get-involved', element: <GetInvolvedNew /> },
       { path: '/about', element: <AboutNew /> },
       { path: '/impact', element: <ImpactNew /> },
+      { path: '/gallery', element: <Gallery /> },
       { path: '/donate', element: <Donate /> },
       { path: '/stories', element: <Stories /> },
       { path: '/stories/:slug', element: <StoryDetail /> },
