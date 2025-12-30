@@ -56,7 +56,7 @@ export const programs: Program[] = [
     tagline: 'Bringing quality healthcare to underserved communities',
     description: 'Regular health camps, free medical checkups, medicine distribution, and awareness programs to ensure basic healthcare reaches everyone who needs it.',
     icon: '🏥',
-    color: 'from-red-500 to-pink-600',
+    color: 'from-red-900 to-red-700',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800',
     stats: [
       { label: 'Patients Treated', value: '10,000+' },

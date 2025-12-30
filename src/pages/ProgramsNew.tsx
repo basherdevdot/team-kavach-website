@@ -49,7 +49,7 @@ export default function Programs() {
       description: 'Blood donation camps for thalassemia patients, sanitary kit distribution for BBMP women workers, and umbrella donations for street vendors during summer.',
       impact: ['50,000+ ml blood collected', '400+ sanitary kits donated', '50+ umbrellas distributed','Engagement with Thalassemia Child Care Center', 'Medication support to pediatric cancer patients at the Indira Gandhi Institute of Child Health'],
       color: 'bg-red-500',
-      gradient: 'from-red-500 to-pink-500'
+      gradient: 'from-red-900 to-red-700'
     },
     {
       icon: IconHeartHandshake,
@@ -126,13 +126,13 @@ export default function Programs() {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <program.icon className="w-48 h-48 text-white/20" strokeWidth={1} />
                     </div>
-                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
                     <div className="absolute bottom-8 left-8 right-8">
-                      <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mb-4">
+                      <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                         <program.icon className="w-12 h-12 text-foreground" strokeWidth={2} />
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">{program.title}</h3>
-                      <p className="text-lg sm:text-xl text-white/90 font-bold">{program.tagline}</p>
+                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 drop-shadow-lg">{program.title}</h3>
+                      <p className="text-lg sm:text-xl text-white font-bold drop-shadow-md">{program.tagline}</p>
                     </div>
                   </div>
                 </div>

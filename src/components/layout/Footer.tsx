@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
           {/* About Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl p-2">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl p-0">
                 <img 
                   src="/images/Logo_TeamKavach.png" 
                   alt="Team Kavach Logo" 

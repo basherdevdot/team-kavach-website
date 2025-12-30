@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Programs', path: '/programs' },
+  { name: 'Gallery', path: '/gallery' },
   { name: 'Get Involved', path: '/get-involved' },
   { name: 'About', path: '/about' },
   { name: 'Impact', path: '/impact' },
@@ -41,11 +42,11 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg overflow-hidden">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg p-0">
                 <img 
                   src="/images/Logo_TeamKavach.png" 
                   alt="Team Kavach Logo" 
-                  className="w-10 h-10 object-contain"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     // Fallback to heart icon if image not found
                     e.currentTarget.style.display = 'none';

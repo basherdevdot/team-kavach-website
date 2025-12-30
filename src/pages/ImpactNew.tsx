@@ -67,7 +67,7 @@ export default function Impact() {
         { label: 'Blankets distributed', value: '1000+' },
         { label: 'Umbrellas donated', value: '100+' }
       ],
-      gradient: 'from-red-500 to-pink-500'
+      gradient: 'from-red-900 to-red-700'
     },
     {
       icon: IconHeartHandshake,

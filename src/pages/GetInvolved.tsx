@@ -47,7 +47,7 @@ export default function GetInvolved() {
       icon: Heart,
       title: 'Make a Donation',
       description: 'Your financial support helps us expand our reach and deepen our impact. Every contribution directly funds our programs and touches lives.',
-      color: 'from-red-500 to-pink-600',
+      color: 'from-red-900 to-red-700',
       actions: [
         'One-time donation',
         'Monthly giving program',
