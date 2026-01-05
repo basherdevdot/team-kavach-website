@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX, IconHeart } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,35 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,8 +55,34 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
   const isHomePage = location.pathname === '/';
+
+  const handleNavClick = useCallback((path: string) => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    
+    // Close menu immediately
+    setIsMobileMenuOpen(false);
+    
+    // Navigate with slight delay to allow animation
+    timeoutRef.current = setTimeout(() => {
+      navigate(path);
+      timeoutRef.current = null;
+    }, 150);
+  }, [navigate]);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
 
   return (
     <nav 
@@ -36,11 +91,12 @@ export const Navbar: React.FC = () => {
           ? 'bg-white shadow-lg'
           : 'bg-gradient-to-b from-black/50 to-transparent'
       }`}
+      style={{ width: '100%', maxWidth: '100vw' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group" onClick={closeMobileMenu}>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg p-0">
                 <img 
@@ -98,12 +154,13 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={toggleMobileMenu}
             className={`lg:hidden p-2.5 rounded-xl transition-colors ${
               isScrolled || !isHomePage
                 ? 'text-foreground hover:bg-muted'
                 : 'text-white hover:bg-white/10'
             }`}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? (
               <IconX className="w-7 h-7" strokeWidth={2.5} />
@@ -115,40 +172,55 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden border-t bg-white shadow-xl overflow-hidden"
-          >
-            <div className="px-4 py-6 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-5 py-3.5 rounded-xl text-base font-bold transition-all ${
-                    isActive(link.path)
-                      ? 'bg-primary text-white'
-                      : 'text-foreground hover:bg-muted'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-4">
-                <Button asChild size="lg" className="w-full font-bold">
-                  <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)}>
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed inset-0 top-20 bg-black/50 backdrop-blur-sm z-40"
+              onClick={closeMobileMenu}
+            />
+            
+            {/* Menu panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden absolute left-0 right-0 top-20 bg-white shadow-2xl border-t z-50"
+              style={{ width: '100vw', maxWidth: '100%' }}
+            >
+              <div className="px-4 py-6 space-y-2 max-h-[calc(100vh-80px)] overflow-y-auto">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.path}
+                    onClick={() => handleNavClick(link.path)}
+                    className={`block w-full text-left px-5 py-3.5 rounded-xl text-base font-bold transition-all ${
+                      isActive(link.path)
+                        ? 'bg-primary text-white'
+                        : 'text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {link.name}
+                  </button>
+                ))}
+                <div className="pt-4">
+                  <Button 
+                    size="lg" 
+                    className="w-full font-bold"
+                    onClick={() => handleNavClick('/donate')}
+                  >
                     <IconHeart className="w-5 h-5 mr-2 fill-current" />
                     Donate Now
-                  </Link>
-                </Button>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

@@ -20,20 +20,23 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Animated Section Wrapper
+// Animated Section Wrapper - Optimized for mobile
 const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
   children, 
   className = '' 
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
+  // Detect if mobile device for lighter animations
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: isMobile ? 20 : 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 20 : 60 }}
+      transition={{ duration: isMobile ? 0.3 : 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -359,7 +362,9 @@ export default function Home() {
                       <img 
                         src={events[0].posterUrl} 
                         alt={events[0].title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           const fallback = e.currentTarget.nextElementSibling as HTMLElement;
@@ -521,7 +526,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
                 <Card className="group h-full border-2 hover:border-primary hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   <CardContent className="p-0">
@@ -651,19 +656,20 @@ export default function Home() {
           {/* Scrollable Instagram Feed */}
           <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">
             <div className="flex gap-4 sm:gap-6 pb-8 w-max">
-              {instagramUrls.map((url, index) => (
+              {instagramUrls.slice(0, 6).map((url, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: 100 }}
+                  initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-[1.02]"
+                  viewport={{ once: true, margin: '0px' }}
+                  transition={{ delay: index * 0.03, duration: 0.3 }}
+                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
                 >
                   <div className="bg-white">
                     <InstagramEmbed 
                       url={url} 
                       width="100%"
+                      captioned={false}
                     />
                   </div>
                 </motion.div>
