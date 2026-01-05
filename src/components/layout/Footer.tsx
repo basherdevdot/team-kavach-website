@@ -5,8 +5,9 @@ import { IconBrandInstagram, IconBrandLinkedin, IconBrandYoutube, IconMail, Icon
 const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
-  { name: 'Impact', path: '/impact' },
   { name: 'Programs', path: '/programs' },
+  { name: 'Gallery', path: '/gallery' },
+  { name: 'Impact', path: '/impact' },
 ];
 
 const volunteerLinks = [
