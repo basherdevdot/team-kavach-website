@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PageHeader } from '../components/PageHeader';
 import { Button } from '@/components/ui/button';
-import { Heart, Copy, Check, Smartphone } from 'lucide-react';
+import { IconCopy, IconCheck, IconDeviceMobile, IconHeart, IconSparkles } from '@tabler/icons-react';
 
 const Donate: React.FC = () => {
   const [copiedUPI, setCopiedUPI] = useState(false);
@@ -23,41 +22,67 @@ const Donate: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-primary/5">
-      <PageHeader
-        title="Support Our Mission"
-        subtitle="Your donation helps us reach more communities and create lasting change"
-        breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Donate' }]}
-      />
+    <div className="min-h-screen pt-20">
+      {/* Hero Section - Matching site theme */}
+      <section className="relative py-24 md:py-32 bg-[#DB143C] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <IconSparkles className="w-5 h-5" />
+              <span className="text-sm font-bold">Every Rupee Counts</span>
+            </div>
+            
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
+              Support Our Mission
+              <br />
+              <span className="text-secondary">Make a Difference</span>
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
+              Your donation helps us reach more communities and create lasting change
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
           {/* Winter Relief Banner */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12 bg-gradient-to-r from-primary via-accent to-secondary p-1 rounded-3xl shadow-2xl"
+            className="mb-12"
           >
-            <div className="bg-white rounded-3xl p-8 md:p-12">
+            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100">
               <div className="text-center">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                  MISSION WINTER RELIEF
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-4">
+                  <IconHeart className="w-4 h-4" />
+                  Winter Campaign 2026
+                </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
+                  MISSION <span className="text-primary">WINTER RELIEF</span>
                 </h2>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-6">
+                <p className="text-base sm:text-lg text-muted-foreground mb-8">
                   Spreading warmth, one blanket at a time
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto mt-8">
-                  <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-primary mb-2">₹250</div>
-                    <div className="text-sm text-foreground/70 font-semibold">for a Blanket and Food packet</div>
+                <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto">
+                  <div className="text-center p-4 bg-gray-50 rounded-xl">
+                    <div className="text-2xl sm:text-3xl font-black text-primary mb-1">₹250</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Blanket + Food</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-accent mb-2">500+</div>
-                    <div className="text-sm text-foreground/70 font-semibold">People to help</div>
+                  <div className="text-center p-4 bg-gray-50 rounded-xl">
+                    <div className="text-2xl sm:text-3xl font-black text-primary mb-1">500+</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">People to help</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-secondary mb-2">Winter</div>
-                    <div className="text-sm text-foreground/70 font-semibold">Your warmth, their survival</div>
+                  <div className="text-center p-4 bg-gray-50 rounded-xl">
+                    <div className="text-2xl sm:text-3xl font-black text-primary mb-1">2026</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Winter Drive</div>
                   </div>
                 </div>
               </div>
@@ -72,46 +97,46 @@ const Donate: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-primary/20 hover:border-primary/60 transition-all">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100">
                 <div className="text-center mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#DB143C] rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <IconDeviceMobile className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-foreground mb-2">UPI Payment</h3>
-                  <p className="text-sm sm:text-base text-foreground/60 font-semibold">Quick & Easy - Pay via any UPI app</p>
+                  <h3 className="text-xl sm:text-2xl font-black text-foreground mb-1">UPI Payment</h3>
+                  <p className="text-sm text-muted-foreground">Quick & Easy - Pay via any UPI app</p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 sm:p-5 rounded-xl border-2 border-primary/30">
-                    <p className="text-sm font-bold text-foreground/70 mb-2">UPI ID</p>
-                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
-                      <p className="text-lg sm:text-xl font-black text-foreground break-all">{UPI_ID}</p>
+                  <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2">UPI ID</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-base sm:text-lg font-bold text-foreground">{UPI_ID}</p>
                       <Button
                         size="sm"
                         onClick={() => copyToClipboard(UPI_ID, 'upi')}
-                        className="bg-primary hover:bg-primary/90 text-white font-bold flex-shrink-0"
+                        className="bg-[#DB143C] hover:bg-[#b91133] text-white font-bold"
                       >
-                        {copiedUPI ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        {copiedUPI ? <IconCheck className="w-4 h-4" /> : <IconCopy className="w-4 h-4" />}
                       </Button>
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-secondary/10 to-primary/10 p-4 sm:p-5 rounded-xl border-2 border-secondary/30">
-                    <p className="text-sm font-bold text-foreground/70 mb-2">PhonePe Number</p>
-                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
-                      <p className="text-lg sm:text-xl font-black text-foreground">{PHONEPE}</p>
+                  <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2">PhonePe Number</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-base sm:text-lg font-bold text-foreground">{PHONEPE}</p>
                       <Button
                         size="sm"
                         onClick={() => copyToClipboard(PHONEPE, 'account')}
-                        className="bg-secondary hover:bg-secondary/90 text-dark font-bold flex-shrink-0"
+                        className="bg-[#DB143C] hover:bg-[#b91133] text-white font-bold"
                       >
-                        {copiedAccount ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        {copiedAccount ? <IconCheck className="w-4 h-4" /> : <IconCopy className="w-4 h-4" />}
                       </Button>
                     </div>
                   </div>
 
-                  <div className="bg-accent/10 p-4 rounded-xl">
-                    <div className="text-xs sm:text-sm text-foreground/70 space-y-2 font-semibold">
+                  <div className="bg-primary/5 p-4 rounded-xl">
+                    <div className="text-sm text-muted-foreground space-y-1.5">
                       <p className="flex items-center gap-2">✓ Open any UPI app (GPay, PhonePe, Paytm)</p>
                       <p className="flex items-center gap-2">✓ Enter UPI ID or Phone number</p>
                       <p className="flex items-center gap-2">✓ Send ₹250 or any amount</p>
@@ -123,98 +148,38 @@ const Donate: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Bank Transfer - Commented Out
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-accent/20 hover:border-accent/60 transition-all h-full">
-                <div className="text-center mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-accent to-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Building className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-black text-foreground mb-2">Bank Transfer</h3>
-                  <p className="text-foreground/60 font-semibold">Direct Deposit</p>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="bg-primary/10 p-4 rounded-xl border-2 border-primary/20">
-                    <p className="text-xs font-bold text-foreground/70 mb-1">Bank Name</p>
-                    <p className="text-foreground font-black text-lg">HDFC Bank</p>
-                  </div>
-                  <div className="bg-secondary/10 p-4 rounded-xl border-2 border-secondary/20">
-                    <p className="text-xs font-bold text-foreground/70 mb-1">Account Name</p>
-                    <p className="text-foreground font-black text-lg">Sankalp India Foundation</p>
-                  </div>
-                  <div className="bg-accent/10 p-4 rounded-xl border-2 border-accent/20">
-                    <p className="text-xs font-bold text-foreground/70 mb-1">Account Number</p>
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-foreground font-black text-lg">{ACCOUNT_NUMBER}</p>
-                      <Button
-                        size="sm"
-                        onClick={() => copyToClipboard(ACCOUNT_NUMBER, 'account')}
-                        className="bg-accent hover:bg-accent/90 text-white font-bold"
-                      >
-                        {copiedAccount ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="bg-primary/10 p-4 rounded-xl border-2 border-primary/20">
-                    <p className="text-xs font-bold text-foreground/70 mb-1">IFSC Code</p>
-                    <p className="text-foreground font-black text-lg">{IFSC}</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-          */}
-
           {/* After Payment Instructions */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-gradient-to-r from-secondary via-yellow-400 to-secondary p-1 rounded-3xl shadow-2xl mb-12"
+            className="mb-12"
           >
-            <div className="bg-white rounded-3xl p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-black text-foreground mb-4 sm:mb-6 flex items-center gap-3">
-                <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-lg sm:text-xl font-black text-foreground mb-6 flex items-center gap-3">
+                <IconHeart className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 Important: After Payment
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0 text-sm">1</div>
-                    <div>
-                      <p className="font-bold text-foreground text-sm sm:text-base">Take Screenshot</p>
-                      <p className="text-xs sm:text-sm text-foreground/70">Capture payment confirmation</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-black shrink-0 text-sm">2</div>
-                    <div>
-                      <p className="font-bold text-foreground text-sm sm:text-base">WhatsApp Us</p>
-                      <a href="https://wa.me/917892474801" className="text-xs sm:text-sm text-primary font-bold hover:underline break-all">+91 7892474801</a>
-                    </div>
-                  </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#DB143C] text-white flex items-center justify-center font-bold mb-3">1</div>
+                  <p className="font-bold text-foreground text-sm">Take Screenshot</p>
+                  <p className="text-xs text-muted-foreground mt-1">Payment confirmation</p>
                 </div>
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-secondary text-dark flex items-center justify-center font-black shrink-0 text-sm">3</div>
-                    <div>
-                      <p className="font-bold text-foreground text-sm sm:text-base">Or Email</p>
-                      <a href="mailto:teamkavach1@gmail.com" className="text-xs sm:text-sm text-primary font-bold hover:underline break-all">teamkavach1@gmail.com</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shrink-0 text-sm">4</div>
-                    <div>
-                      <p className="font-bold text-foreground text-sm sm:text-base">Get Receipt</p>
-                      <p className="text-xs sm:text-sm text-foreground/70">Within 24 hours</p>
-                    </div>
-                  </div>
+                <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#DB143C] text-white flex items-center justify-center font-bold mb-3">2</div>
+                  <p className="font-bold text-foreground text-sm">WhatsApp Us</p>
+                  <a href="https://wa.me/917892474801" className="text-xs text-primary font-semibold hover:underline mt-1">+91 7892474801</a>
+                </div>
+                <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#DB143C] text-white flex items-center justify-center font-bold mb-3">3</div>
+                  <p className="font-bold text-foreground text-sm">Or Email</p>
+                  <a href="mailto:teamkavach1@gmail.com" className="text-xs text-primary font-semibold hover:underline mt-1">teamkavach1@gmail.com</a>
+                </div>
+                <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
+                  <div className="w-10 h-10 rounded-full bg-[#DB143C] text-white flex items-center justify-center font-bold mb-3">4</div>
+                  <p className="font-bold text-foreground text-sm">Get Receipt</p>
+                  <p className="text-xs text-muted-foreground mt-1">Within 24 hours</p>
                 </div>
               </div>
             </div>
@@ -225,24 +190,24 @@ const Donate: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-primary/20 text-center"
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 text-center"
           >
-            <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3 sm:mb-4">Need Help?</h3>
-            <p className="text-sm sm:text-base text-foreground/70 mb-4 sm:mb-6 font-semibold">
+            <h3 className="text-lg sm:text-xl font-black text-foreground mb-2">Need Help?</h3>
+            <p className="text-sm text-muted-foreground mb-6">
               Have questions about donations? Contact us anytime!
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
               <a 
                 href="https://wa.me/917892474801" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold transition-colors"
               >
                 📱 WhatsApp
               </a>
               <a 
                 href="mailto:teamkavach1@gmail.com"
-                className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold hover:scale-105 transition-all shadow-lg text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#DB143C] hover:bg-[#b91133] text-white rounded-xl font-bold transition-colors"
               >
                 ✉️ Email Us
               </a>

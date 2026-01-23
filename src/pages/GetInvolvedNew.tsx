@@ -83,7 +83,7 @@ export default function GetInvolved() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative py-32 bg-[#DB143C] text-white overflow-hidden">
+      <section className="relative py-24 bg-primary text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,8 +224,8 @@ export default function GetInvolved() {
                 <p className="text-foreground/70 text-lg">{step.description}</p>
                 
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-full w-full h-1">
-                    <IconArrowRight className="w-8 h-8 text-primary/30 absolute left-1/2 transform -translate-x-1/2" />
+                  <div className="hidden md:flex absolute top-16 -right-6 translate-x-1/2 items-center justify-center">
+                    <IconArrowRight className="w-8 h-8 text-primary/40" />
                   </div>
                 )}
               </motion.div>
@@ -243,57 +243,114 @@ export default function GetInvolved() {
         </div>
       </Section>
 
-      {/* Support Us Section */}
-      <Section className="py-32 bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 text-foreground">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <IconHeart className="w-20 h-20 mx-auto mb-8" strokeWidth={1.5} />
-          <h2 className="mb-8">
-            Can't Volunteer?
-            <br />
-            Support Us Instead
-          </h2>
-          <p className="text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Your donations help us reach more communities, organize more events, and create bigger impact
-          </p>
-          <Button asChild size="lg" className="text-lg px-10 h-14 font-bold">
-            <Link to="/donate">
-              Make a Donation
-              <IconArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
+      {/* Support Us Section - Redesigned */}
+      <Section className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left - Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
+                <IconHeart className="w-4 h-4" />
+                Support Our Mission
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
+                Can't Volunteer? <br />
+                <span className="text-primary">Support Us Instead</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Your donations help us reach more communities, organize more events, and create bigger impact. Every rupee counts!
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="bg-[#DB143C] hover:bg-[#b91133] text-white font-bold">
+                  <Link to="/donate">
+                    Make a Donation
+                    <IconArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            
+            {/* Right - Visual Card */}
+            <div className="relative">
+              <Card className="border-0 shadow-xl overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="bg-gradient-to-br from-[#DB143C] to-[#a30f2e] p-8">
+                    <h3 className="text-2xl font-black mb-6 text-white">Your Impact</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4 bg-white/15 rounded-lg p-4">
+                        <div className="text-3xl font-black text-white">₹250</div>
+                        <div className="text-white/90">= 1 Blanket + Food Packet</div>
+                      </div>
+                      <div className="flex items-center gap-4 bg-white/15 rounded-lg p-4">
+                        <div className="text-3xl font-black text-white">₹500</div>
+                        <div className="text-white/90">= School Kit for a Student</div>
+                      </div>
+                      <div className="flex items-center gap-4 bg-white/15 rounded-lg p-4">
+                        <div className="text-3xl font-black text-white">₹1000</div>
+                        <div className="text-white/90">= Support 4 Homeless People</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </Section>
 
-      {/* Contact Section */}
-      <Section className="py-20 bg-[#DB143C] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-white mb-6">Have Questions?</h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-            We're here to help! Reach out to us on Instagram or email for any queries about volunteering
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-10 h-14 font-bold"
-            >
-              <a href="https://www.instagram.com/teamkavach/" target="_blank" rel="noopener noreferrer">
-                <IconBrandInstagram className="w-6 h-6 mr-2" />
-                DM on Instagram
-              </a>
-            </Button>
-            <Button 
-              asChild 
-              size="lg"
-              className="text-lg px-10 h-14 bg-white text-primary hover:bg-white/90 font-bold"
-            >
-              <Link to="/contact">
-                <IconMail className="w-6 h-6 mr-2" />
-                Send Email
-              </Link>
-            </Button>
-          </div>
+      {/* Contact Section - Redesigned */}
+      <Section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="border-2 border-gray-100 shadow-lg overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid md:grid-cols-2">
+                {/* Left - Content */}
+                <div className="p-8 md:p-10">
+                  <h2 className="text-2xl md:text-3xl font-black text-foreground mb-4">
+                    Have Questions?
+                  </h2>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">
+                    We're here to help! Reach out to us on Instagram or email for any queries about volunteering.
+                  </p>
+                  <div className="space-y-4">
+                    <a 
+                      href="https://www.instagram.com/teamkavach/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg transition-all group"
+                    >
+                      <IconBrandInstagram className="w-6 h-6" strokeWidth={2} />
+                      <div>
+                        <div className="font-bold">DM on Instagram</div>
+                        <div className="text-sm text-white/80">@teamkavach</div>
+                      </div>
+                      <IconArrowRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <Link 
+                      to="/contact"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 text-foreground hover:bg-gray-200 transition-all group"
+                    >
+                      <IconMail className="w-6 h-6 text-primary" strokeWidth={2} />
+                      <div>
+                        <div className="font-bold">Send us an Email</div>
+                        <div className="text-sm text-muted-foreground">kavachtrust@gmail.com</div>
+                      </div>
+                      <IconArrowRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+                
+                {/* Right - Visual */}
+                <div className="hidden md:flex bg-primary items-center justify-center p-10">
+                  <div className="text-center text-white">
+                    <IconUsers className="w-20 h-20 mx-auto mb-4" strokeWidth={1.5} />
+                    <p className="text-xl font-black">Join 150+ Volunteers</p>
+                    <p className="text-white/90 mt-2">Making a difference in Bangalore</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </Section>
     </div>

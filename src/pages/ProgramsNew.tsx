@@ -40,7 +40,8 @@ export default function Programs() {
       description: 'From teaching Computer Science and English in government schools to distributing exam kits and recycling notebooks, we equip students with tools for success.',
       impact: ['3000+ notebooks recycled', '1700 recycled books distributed', '150+ exam kits distributed', '50+ teaching hours', 'Rural school rejuvenation project', 'Career counselling and soft skill training to govt schools and colleges'],
       color: 'bg-blue-500',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-blue-500 to-cyan-500',
+      image: '/images/gallery/govt-school-college/govt-school-college-10.webp'
     },
     {
       icon: IconMedicalCross,
@@ -48,8 +49,9 @@ export default function Programs() {
       tagline: 'Caring for the Vulnerable',
       description: 'Blood donation camps for thalassemia patients, sanitary kit distribution for BBMP women workers, and umbrella donations for street vendors during summer.',
       impact: ['50,000+ ml blood collected', '400+ sanitary kits donated', '50+ umbrellas distributed','Engagement with Thalassemia Child Care Center', 'Medication support to pediatric cancer patients at the Indira Gandhi Institute of Child Health'],
-      color: 'bg-red-500',
-      gradient: 'from-red-900 to-red-700'
+      color: 'bg-primary',
+      gradient: 'from-red-900 to-red-700',
+      image: '/images/gallery/blood-donation/blood-donation-5.webp'
     },
     {
       icon: IconHeartHandshake,
@@ -58,7 +60,8 @@ export default function Programs() {
       description: 'Our flagship overnight annual drive since 2019—distributing blankets and food to homeless individuals across Bengaluru during peak winter.',
       impact: ['1000+ blankets distributed', '500+ food packets', 'Annual overnight drives', 'Covering all of Bengaluru'],
       color: 'bg-orange-500',
-      gradient: 'from-orange-500 to-amber-500'
+      gradient: 'from-orange-500 to-amber-500',
+      image: '/images/gallery/blanket-distribution/blanket-distribution-3.webp'
     },
     {
       icon: IconUsers,
@@ -67,7 +70,8 @@ export default function Programs() {
       description: 'Plog Treks at Shivagange Hills, lake cleaning using natural bio-enzymes from vNurture initiative, and promoting eco-friendly practices.',
       impact: ['600+ kg plastic cleaned', '4+ years of Plog Treks', 'Bio-enzyme lake cleaning', 'Zero-chemical approach', 'Mango Seed Collection and Plantation Drive'],
       color: 'bg-green-500',
-      gradient: 'from-green-500 to-emerald-500'
+      gradient: 'from-green-500 to-emerald-500',
+      image: '/images/gallery/plog-trek/plog-trek-6.webp'
     },
     {
       icon: IconTrophy,
@@ -76,14 +80,15 @@ export default function Programs() {
       description: 'Organizing sports events and cultural programs in underprivileged communities to foster teamwork, confidence, and joy among youth.',
       impact: ["Led badminton tournament to fund rural school sports equipment.", "Organized annual sports-cultural meet at Govt Higher Primary School, Magadi Road.", "Co-organized sports day at MEG School, Bangalore.", "Conducted yoga sessions in govt schools."],
       color: 'bg-purple-500',
-      gradient: 'from-purple-500 to-fuchsia-500'
+      gradient: 'from-purple-500 to-fuchsia-500',
+      image: '/images/gallery/team-group-photos/team-group-photos-3.webp'
     }
   ];
 
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative py-32 bg-[#DB143C] text-white overflow-hidden">
+      <section className="relative py-24 bg-primary text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,6 +98,11 @@ export default function Programs() {
             transition={{ duration: 0.7 }}
             className="max-w-4xl"
           >
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <IconHeartHandshake className="w-5 h-5" />
+              <span className="text-sm font-bold">Community Impact</span>
+            </div>
+            
             <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
               Our Programs
               <br />
@@ -122,10 +132,14 @@ export default function Programs() {
               >
                 {/* Image/Icon Side */}
                 <div className={`order-2 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <div className={`relative h-64 sm:h-80 md:h-96 bg-gradient-to-br ${program.gradient} rounded-3xl overflow-hidden shadow-2xl`}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <program.icon className="w-48 h-48 text-white/20" strokeWidth={1} />
-                    </div>
+                  <div className="relative h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
+                    {/* Real Image Background */}
+                    <img 
+                      src={program.image} 
+                      alt={program.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Overlay gradient for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
                     <div className="absolute bottom-8 left-8 right-8">
                       <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg">

@@ -38,12 +38,12 @@ const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({
 
 export default function Impact() {
   const stats = [
-    { icon: IconUsers, value: '150+', label: 'Active Volunteers', color: 'text-blue-500' },
-    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed', color: 'text-red-500' },
-    { icon: IconCalendar, value: '6+', label: 'Years of Service', color: 'text-green-500' },
-    { icon: IconMapPin, value: '500+', label: 'Food Packets Given', color: 'text-purple-500' },
-    { icon: IconSchool, value: '760+', label: 'Notebooks Recycled', color: 'text-blue-500' },
-    { icon: IconMedicalCross, value: '50L+', label: 'Blood Collected (ml)', color: 'text-red-500' },
+    { icon: IconUsers, value: '150+', label: 'Active Volunteers', color: 'text-primary' },
+    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed', color: 'text-primary' },
+    { icon: IconCalendar, value: '6+', label: 'Years of Service', color: 'text-primary' },
+    { icon: IconMapPin, value: '500+', label: 'Food Packets Given', color: 'text-primary' },
+    { icon: IconSchool, value: '760+', label: 'Notebooks Recycled', color: 'text-primary' },
+    { icon: IconMedicalCross, value: '50L+', label: 'Blood Collected (ml)', color: 'text-primary' },
   ];
 
   const programImpact = [
@@ -106,7 +106,7 @@ export default function Impact() {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-            <section className="relative py-32 bg-[#DB143C] text-white overflow-hidden">
+      <section className="relative py-24 bg-primary text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,7 +122,7 @@ export default function Impact() {
             </div>
             
             <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
-              Our Impact
+              Your Impact
               <br />
               <span className="text-secondary">In Numbers</span>
             </h1>
@@ -133,41 +133,8 @@ export default function Impact() {
         </div>
       </section>
 
-      {/* Stats Grid */}
-      <Section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">Impact by Numbers</h2>
-            <p className="text-xl text-foreground/70">Measurable change we've created together</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <stat.icon className={`w-10 h-10 ${stat.color}`} strokeWidth={2} />
-                </div>
-                <div className="text-5xl md:text-6xl font-black text-primary mb-3">
-                  {stat.value}
-                </div>
-                <div className="text-lg font-bold text-foreground/70">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       {/* Program-wise Impact */}
-      <Section className="py-24 bg-gray-50">
+      <Section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="mb-4">Impact by Program</h2>
