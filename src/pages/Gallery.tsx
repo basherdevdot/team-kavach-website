@@ -277,14 +277,34 @@ const Gallery: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Compact Header */}
-      <div className="bg-gradient-to-r from-primary to-primary/80 text-white pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-black mb-3 text-white">Photo Gallery</h1>
-          <p className="text-white/90 text-lg">Moments from our journey of making a difference</p>
+    <div className="min-h-screen bg-background pt-20">
+      {/* Hero Section */}
+      <section className="relative py-24 bg-primary text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <IconPhotoPlus className="w-5 h-5" />
+              <span className="text-sm font-bold">Our Visual Journey</span>
+            </div>
+            
+            <h1 className="text-white mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black">
+              Photo Gallery
+              <br />
+              <span className="text-secondary">Stories in Pictures</span>
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
+              Witness the moments that define our mission—real people, real impact, real change across Bangalore
+            </p>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Loading State */}

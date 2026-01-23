@@ -274,10 +274,10 @@ export default function About() {
       </Section>
 
       {/* Mission Statement */}
-      <Section className="py-32 bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 text-foreground">
+      <Section className="py-32 bg-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <IconQuote className="w-16 h-16 mx-auto mb-8 text-foreground/30" strokeWidth={1.5} />
-          <h2 className="mb-8">Our Mission</h2>
+          <IconQuote className="w-16 h-16 mx-auto mb-8 text-primary/30" strokeWidth={1.5} />
+          <h2 className="mb-8 text-foreground">Our Mission</h2>
           <p className="text-3xl md:text-4xl font-black leading-tight max-w-4xl mx-auto mb-12">
             "To safeguard those around us from various life challenges—Cold, Hunger, Illiteracy, Unemployment, Pollution, Infections, and Heat—by responding with compassion, innovation, and collective action."
           </p>
@@ -292,24 +292,24 @@ export default function About() {
             Led by passionate volunteers committed to social change
           </p>
           
-          <div className="bg-gradient-to-br from-primary to-accent rounded-3xl overflow-hidden text-white relative">
+          <div className="bg-primary rounded-3xl overflow-hidden text-white relative">
             {/* Team Group Photo */}
             <img 
               src="/images/team/team-group.jpg" 
               alt="Team Kavach Volunteers"
-              className="absolute inset-0 w-full h-full object-cover opacity-40"
+              className="absolute inset-0 w-full h-full object-cover opacity-30"
               onError={(e) => {
                 // Fallback if image not found
                 e.currentTarget.style.display = 'none';
               }}
             />
-            <div className="relative p-16 bg-gradient-to-br from-primary/70 to-accent/70">
+            <div className="relative p-16">
               <IconUsers className="w-24 h-24 mx-auto mb-6" strokeWidth={1.5} />
-              <h3 className="text-4xl font-black mb-4">150+ Volunteers</h3>
+              <h3 className="text-4xl font-black mb-4 text-white">150+ Volunteers</h3>
               <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
                 Students, professionals, and community leaders united by a common goal—creating positive change
               </p>
-              <Button asChild size="lg" variant="secondary" className="font-bold">
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold">
                 <Link to="/get-involved">
                   Join Our Team
                   <IconArrowRight className="w-5 h-5 ml-2" />

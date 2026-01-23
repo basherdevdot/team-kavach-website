@@ -99,7 +99,7 @@ export default function Home() {
       title: 'Healthcare',
       description: 'Blood donation camps supporting thalassemia patients and sanitary kit distribution',
       impact: '50,000+ ml blood collected',
-      color: 'bg-red-500',
+      color: 'bg-primary',
       image: '/images/programs/healthcare.jpg'
     },
     {
@@ -314,7 +314,7 @@ export default function Home() {
       </motion.section>
 
       {/* Upcoming Event Section - Professional Layout */}
-      <Section className="py-24 bg-gradient-to-br from-white via-primary/5 to-secondary/10">
+      <Section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -322,15 +322,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white mb-6 shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white mb-6"
             >
-              <IconCalendar className="w-5 h-5" />
-              <span className="font-black">UPCOMING EVENT</span>
+              <IconCalendar className="w-5 h-5" strokeWidth={2} />
+              <span className="font-bold">UPCOMING EVENT</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-to-r from-purple-600 via-red-800 to-amber-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 text-primary">
               Join Our Next Event
             </h2>
-            <p className="text-lg sm:text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
               Be part of the change. Register now and make a real difference in people's lives
             </p>
           </div>
@@ -353,18 +353,15 @@ export default function Home() {
                 className="relative"
               >
                 <div className="relative group">
-                  {/* Decorative Border Frame */}
-                  <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-3xl opacity-75 blur-xl group-hover:opacity-100 transition-all duration-500" />
-                  
                   {/* Main Poster Container */}
-                  <div className="relative bg-white p-2 sm:p-4 rounded-2xl shadow-2xl border-4 border-white">
-                    <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-purple-600">
+                  <div className="relative bg-white p-2 rounded-2xl shadow-lg border border-border">
+                    <div className="relative overflow-hidden rounded-xl bg-gray-100">
                       <img 
                         src={events[0].posterUrl} 
                         alt={events[0].title}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-contain"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           const fallback = e.currentTarget.nextElementSibling as HTMLElement;
@@ -372,9 +369,9 @@ export default function Home() {
                         }}
                       />
                       {/* Fallback */}
-                      <div className="hidden absolute inset-0 flex items-center justify-center text-white p-8 text-center">
+                      <div className="hidden absolute inset-0 flex items-center justify-center text-white p-8 text-center bg-primary">
                         <div>
-                          <IconCalendar className="w-24 h-24 mx-auto mb-6 opacity-90" />
+                          <IconCalendar className="w-24 h-24 mx-auto mb-6 opacity-90" strokeWidth={1.5} />
                           <h3 className="text-3xl font-black mb-3">{events[0].title}</h3>
                           <p className="text-lg opacity-90">Add your event poster here!</p>
                           <p className="text-sm opacity-70 mt-2 bg-black/20 px-4 py-2 rounded-lg inline-block">
@@ -384,9 +381,9 @@ export default function Home() {
                       </div>
                       
                       {/* Date Badge Overlay */}
-                      <div className="absolute top-3 right-3 sm:top-6 sm:right-6 bg-white rounded-xl sm:rounded-2xl px-3 py-2 sm:px-6 sm:py-4 text-center shadow-2xl border-2 sm:border-4 border-primary/20">
-                        <div className="text-3xl sm:text-5xl font-black text-primary">{events[0].date}</div>
-                        <div className="text-xs sm:text-sm font-black text-foreground/70 tracking-wider">{events[0].month}</div>
+                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white rounded-xl px-3 py-2 sm:px-4 sm:py-3 text-center shadow-md border border-border">
+                        <div className="text-2xl sm:text-3xl font-black text-primary">{events[0].date}</div>
+                        <div className="text-xs font-bold text-foreground/60 tracking-wider">{events[0].month}</div>
                       </div>
                     </div>
                   </div>
@@ -399,73 +396,73 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="space-y-6"
+                className="space-y-5"
               >
                 {/* Event Title */}
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary mb-3 sm:mb-4">
-                    <IconSparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <span className="text-xs sm:text-sm font-black uppercase tracking-wide">Featured Event</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-3">
+                    <IconSparkles className="w-3 h-3 sm:w-4 sm:h-4" strokeWidth={2} />
+                    <span className="text-xs font-bold uppercase tracking-wide">Featured Event</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 leading-tight">
                     {events[0].title}
                   </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-foreground/70 leading-relaxed">
+                  <p className="text-base text-foreground/70 leading-relaxed">
                     {events[0].shortDescription || events[0].description}
                   </p>
                 </div>
 
                 {/* Event Details Grid */}
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  <div className="bg-primary/10 p-3 sm:p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
-                    <div className="text-xs sm:text-sm font-bold text-primary/70 mb-1">📅 DATE</div>
-                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground">{events[0].fullDate}</div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-muted p-4 rounded-xl border border-border">
+                    <div className="text-xs font-bold text-foreground/60 mb-1 flex items-center gap-1">📅 DATE</div>
+                    <div className="text-sm font-bold text-foreground">{events[0].fullDate}</div>
                   </div>
-                  <div className="bg-secondary/10 p-3 sm:p-5 rounded-xl border-2 border-secondary/20 hover:border-secondary/40 transition-all">
-                    <div className="text-xs sm:text-sm font-bold text-secondary/70 mb-1">⏰ TIME</div>
-                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground">{events[0].time}</div>
+                  <div className="bg-muted p-4 rounded-xl border border-border">
+                    <div className="text-xs font-bold text-foreground/60 mb-1">⏰ TIME</div>
+                    <div className="text-sm font-bold text-foreground">{events[0].time}</div>
                   </div>
-                  <div className="bg-accent/10 p-3 sm:p-5 rounded-xl border-2 border-accent/20 hover:border-accent/40 transition-all">
-                    <div className="text-xs sm:text-sm font-bold text-accent/70 mb-1">📍 VENUE</div>
-                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground line-clamp-2">{events[0].venue}</div>
+                  <div className="bg-muted p-4 rounded-xl border border-border">
+                    <div className="text-xs font-bold text-foreground/60 mb-1">📍 VENUE</div>
+                    <div className="text-sm font-bold text-foreground line-clamp-2">{events[0].venue}</div>
                   </div>
-                  <div className="bg-primary/10 p-3 sm:p-5 rounded-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
-                    <div className="text-xs sm:text-sm font-bold text-primary/70 mb-1">📌 LOCATION</div>
-                    <div className="text-sm sm:text-base md:text-lg font-black text-foreground line-clamp-2">{events[0].location}</div>
+                  <div className="bg-muted p-4 rounded-xl border border-border">
+                    <div className="text-xs font-bold text-foreground/60 mb-1">📌 LOCATION</div>
+                    <div className="text-sm font-bold text-foreground line-clamp-2">{events[0].location}</div>
                   </div>
                 </div>
 
                 {/* Event Stats */}
                 {events[0].stats && (
-                  <div className="bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 p-4 sm:p-6 rounded-xl border-2 border-primary/10">
-                    <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
+                  <div className="bg-muted p-4 rounded-xl border border-border">
+                    <div className="grid grid-cols-3 gap-3 text-center">
                       <div>
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-primary">{events[0].stats.target}</div>
-                        <div className="text-xs font-bold text-foreground/60 mt-1">TARGET</div>
+                        <div className="text-lg sm:text-xl font-black text-primary">{events[0].stats.target}</div>
+                        <div className="text-[10px] font-bold text-foreground/60 mt-1">TARGET</div>
                       </div>
                       <div>
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-secondary">{events[0].stats.volunteers}</div>
-                        <div className="text-xs font-bold text-foreground/60 mt-1">VOLUNTEERS</div>
+                        <div className="text-lg sm:text-xl font-black text-primary">{events[0].stats.volunteers}</div>
+                        <div className="text-[10px] font-bold text-foreground/60 mt-1">VOLUNTEERS</div>
                       </div>
                       <div>
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-accent">{events[0].stats.locations}</div>
-                        <div className="text-xs font-bold text-foreground/60 mt-1">LOCATIONS</div>
+                        <div className="text-lg sm:text-xl font-black text-primary">{events[0].stats.locations}</div>
+                        <div className="text-[10px] font-bold text-foreground/60 mt-1">LOCATIONS</div>
                       </div>
                     </div>
                   </div>
                 )}
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <Link to={events[0].registrationLink} className="flex-1">
-                    <Button size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-black text-sm sm:text-base md:text-lg py-5 sm:py-6 md:py-7 shadow-xl hover:shadow-2xl transition-all">
-                      <IconUsers className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white font-bold">
+                      <IconUsers className="w-5 h-5 mr-2" strokeWidth={2} />
                       Register as Volunteer
                     </Button>
                   </Link>
                   <Link to={events[0].donationLink} className="flex-1">
-                    <Button size="lg" variant="outline" className="w-full border-2 border-primary hover:bg-primary hover:text-white font-black text-sm sm:text-base md:text-lg py-5 sm:py-6 md:py-7 shadow-lg hover:shadow-xl transition-all">
-                      <IconHeart className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+                    <Button size="lg" variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold">
+                      <IconHeart className="w-5 h-5 mr-2" strokeWidth={2} />
                       Donate Now
                     </Button>
                   </Link>
@@ -483,7 +480,7 @@ export default function Home() {
       </Section>
 
       {/* What We Do - Bold Statement */}
-      <Section className="py-32 bg-[#DB143C] text-white relative overflow-hidden">
+      <Section className="py-24 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -491,18 +488,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-8"
+            className="mb-6 text-white"
           >
-            What Happens
-            <br />
-            When We Care
+            What Happens When We Care
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/90 leading-relaxed"
+            className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto"
           >
             Real change happens when communities come together. Through dedicated volunteers and compassionate action, we're transforming lives across Bangalore.
           </motion.p>
@@ -528,48 +523,48 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
               >
-                <Card className="group h-full border-2 hover:border-primary hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                <Card className="h-full border border-border overflow-hidden">
                   <CardContent className="p-0">
                     {/* Program Image */}
                     <div className="relative h-48 overflow-hidden bg-gray-100">
-                      <img 
-                        src={program.image} 
-                        alt={program.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {
-                          // Fallback if image not found
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                        }}
-                      />
-                      <div className={`hidden w-full h-full ${program.color} flex items-center justify-center`}>
-                        <program.icon className="w-20 h-20 text-white opacity-50" strokeWidth={1.5} />
+                        <img 
+                          src={program.image} 
+                          alt={program.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback if image not found
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                          }}
+                        />
+                        <div className={`hidden w-full h-full ${program.color} flex items-center justify-center`}>
+                          <program.icon className="w-20 h-20 text-white opacity-50" strokeWidth={1.5} />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="p-8">
-                      <div className={`w-16 h-16 ${program.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                        <program.icon className="w-9 h-9 text-white" strokeWidth={2} />
+                      
+                      {/* Content */}
+                      <div className="p-6">
+                        <div className={`w-12 h-12 ${program.color} rounded-xl flex items-center justify-center mb-4`}>
+                          <program.icon className="w-6 h-6 text-white" strokeWidth={2} />
+                        </div>
+                        <h3 className="text-lg font-black mb-2">{program.title}</h3>
+                        <p className="text-foreground/70 mb-3 leading-relaxed text-sm">
+                          {program.description}
+                        </p>
+                        <div className="flex items-center text-primary font-bold text-sm">
+                          <IconCircleCheck className="w-4 h-4 mr-2" strokeWidth={2} />
+                          {program.impact}
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-black mb-4">{program.title}</h3>
-                      <p className="text-foreground/70 mb-6 leading-relaxed">
-                        {program.description}
-                      </p>
-                      <div className="flex items-center text-primary font-bold">
-                        <IconCircleCheck className="w-5 h-5 mr-2" />
-                        {program.impact}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild size="lg" variant="outline" className="font-bold">
+            <Button asChild size="lg" className="font-bold bg-primary hover:bg-primary/90 text-white">
               <Link to="/programs">
                 View All Programs
                 <IconArrowRight className="w-5 h-5 ml-2" />
@@ -582,21 +577,21 @@ export default function Home() {
       {/* Volunteer CTA - Split Section */}
       <Section className="relative overflow-hidden">
         <div className="grid md:grid-cols-2">
-          <div className="relative h-96 md:h-auto bg-gradient-to-br from-red-900 to-red-700 overflow-hidden">
+          <div className="relative h-96 md:h-auto bg-primary overflow-hidden">
             {/* Volunteer Photo */}
             <img 
               src="/images/volunteers/team-action.jpg" 
               alt="Team Kavach Volunteers"
-              className="absolute inset-0 w-full h-full object-cover opacity-70"
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
               onError={(e) => {
                 // Fallback if image not found
                 e.currentTarget.style.display = 'none';
               }}
             />
-            <div className="absolute inset-0 flex items-center justify-center p-12 bg-gradient-to-br from-red-900/90 to-red-700/90">
+            <div className="absolute inset-0 flex items-center justify-center p-12 bg-primary/80">
               <div className="text-center text-white">
-                <IconUsers className="w-32 h-32 mx-auto mb-6 opacity-90" strokeWidth={1.5} />
-                <p className="text-3xl font-black text-white drop-shadow-lg">Join Our Community</p>
+                <IconUsers className="w-24 h-24 mx-auto mb-6 opacity-90" strokeWidth={1.5} />
+                <p className="text-2xl font-black text-white">Join Our Community</p>
               </div>
             </div>
           </div>
@@ -623,25 +618,25 @@ export default function Home() {
       </Section>
 
       {/* Instagram Gallery - Horizontal Scrolling Carousel */}
-      <Section className="py-24 bg-gradient-to-br from-red-900 via-red-800 to-red-700 text-white overflow-hidden">
+      <Section className="py-24 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 mb-6"
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 backdrop-blur-sm border-2 border-primary/30 mb-6"
             >
-              <IconBrandInstagram className="w-6 h-6" />
-              <span className="font-black uppercase tracking-wide">Live from Instagram</span>
+              <IconBrandInstagram className="w-6 h-6 text-primary" />
+              <span className="font-black uppercase tracking-wide text-primary">Live from Instagram</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6">
               See Our Impact In Action
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-4">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               Real stories. Real people. Real change happening every day.
             </p>
-            <p className="text-xs sm:text-sm text-white/70 font-semibold">
+            <p className="text-xs sm:text-sm text-gray-500 font-semibold">
               ← Swipe to see more posts →
             </p>
           </div>
@@ -650,8 +645,8 @@ export default function Home() {
         {/* Horizontal Scrolling Container */}
         <div className="relative">
           {/* Gradient Overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-red-900 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-red-700 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-primary to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none" />
           
           {/* Scrollable Instagram Feed */}
           <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">
@@ -663,7 +658,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '0px' }}
                   transition={{ delay: index * 0.03, duration: 0.3 }}
-                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg"
                 >
                   <div className="bg-white">
                     <InstagramEmbed 
@@ -680,9 +675,9 @@ export default function Home() {
 
         {/* CTA */}
         <div className="text-center mt-12 px-4">
-          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-black text-lg px-10 py-7 shadow-2xl hover:shadow-white/50 transition-all">
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-base px-8 py-6 shadow-lg transition-all">
             <a href="https://www.instagram.com/teamkavach/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
-              <IconBrandInstagram className="w-6 h-6" />
+              <IconBrandInstagram className="w-5 h-5" strokeWidth={2} />
               Follow @teamkavach
             </a>
           </Button>
@@ -701,25 +696,23 @@ export default function Home() {
       </Section>
 
       {/* Final CTA */}
-      <Section className="py-20 bg-[#DB143C] text-white">
+      <Section className="py-20 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <IconHeart className="w-16 h-16 mx-auto mb-6" strokeWidth={1.5} />
+          <IconHeart className="w-14 h-14 mx-auto mb-6" strokeWidth={1.5} />
           <h2 className="text-white mb-6">
-            Are You Ready
-            <br />
-            To Make A Difference?
+            Are You Ready To Make A Difference?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto">
             Every action counts. Every volunteer matters. Every life touched creates a ripple.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-10 h-14 font-bold">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="secondary" className="font-bold">
               <Link to="/get-involved">Start Volunteering</Link>
             </Button>
             <Button 
               asChild 
               size="lg" 
-              className="text-lg px-10 h-14 bg-white text-primary hover:bg-white/90 font-bold"
+              className="bg-white text-primary hover:bg-white/90 font-bold"
             >
               <Link to="/donate">Support Our Cause</Link>
             </Button>
