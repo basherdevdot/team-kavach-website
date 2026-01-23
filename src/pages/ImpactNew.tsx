@@ -2,14 +2,10 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import {
-  IconHeart,
-  IconUsers,
   IconSchool,
   IconMedicalCross,
   IconHeartHandshake,
-  IconCalendar,
   IconTrendingUp,
-  IconMapPin,
   IconSparkles,
   IconQuote
 } from '@tabler/icons-react';
@@ -37,15 +33,6 @@ const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({
 };
 
 export default function Impact() {
-  const stats = [
-    { icon: IconUsers, value: '150+', label: 'Active Volunteers', color: 'text-primary' },
-    { icon: IconHeart, value: '1000+', label: 'Blankets Distributed', color: 'text-primary' },
-    { icon: IconCalendar, value: '6+', label: 'Years of Service', color: 'text-primary' },
-    { icon: IconMapPin, value: '500+', label: 'Food Packets Given', color: 'text-primary' },
-    { icon: IconSchool, value: '760+', label: 'Notebooks Recycled', color: 'text-primary' },
-    { icon: IconMedicalCross, value: '50L+', label: 'Blood Collected (ml)', color: 'text-primary' },
-  ];
-
   const programImpact = [
     {
       icon: IconSchool,
