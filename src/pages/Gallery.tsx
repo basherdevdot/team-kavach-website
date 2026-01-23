@@ -219,13 +219,10 @@ const Gallery: React.FC = () => {
           )}
         </div>
 
-        {/* Lightbox Modal */}
+        {/* Lightbox Modal - Below navbar */}
         {selectedPhoto && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          <div
+            className="fixed top-20 left-0 right-0 bottom-0 bg-black z-[60] flex flex-col items-center justify-center px-16 py-4"
             onClick={() => setSelectedPhoto(null)}
           >
             <button
@@ -257,20 +254,23 @@ const Gallery: React.FC = () => {
               </button>
             )}
             
-            <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            {/* Image Container - fills available space */}
+            <div className="flex-1 w-full flex items-center justify-center overflow-hidden" onClick={(e) => e.stopPropagation()}>
               <img
                 src={selectedPhoto.url}
                 alt={selectedPhoto.caption}
-                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               />
-              <div className="text-center mt-6 bg-black/70 rounded-lg px-6 py-4 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold mb-2 text-white">{selectedPhoto.caption}</h3>
-                <p className="text-white/80 text-base font-medium">
-                  Photo {currentPhotoIndex + 1} of {eventPhotos.length}
-                </p>
-              </div>
             </div>
-          </motion.div>
+            
+            {/* Caption at bottom */}
+            <div className="w-full text-center py-4" onClick={(e) => e.stopPropagation()}>
+              <h3 className="text-2xl font-bold mb-1 text-white">{selectedPhoto.caption}</h3>
+              <p className="text-white/80 text-base font-medium">
+                Photo {currentPhotoIndex + 1} of {eventPhotos.length}
+              </p>
+            </div>
+          </div>
         )}
       </div>
     );
