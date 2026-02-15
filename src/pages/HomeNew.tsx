@@ -618,8 +618,8 @@ export default function Home() {
       </Section>
 
       {/* Instagram Gallery - Horizontal Scrolling Carousel */}
-      <Section className="py-24 bg-gray-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <Section className="py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -636,21 +636,24 @@ export default function Home() {
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               Real stories. Real people. Real change happening every day.
             </p>
-            <p className="text-xs sm:text-sm text-gray-500 font-semibold">
+            <p className="text-xs sm:text-sm text-gray-500 font-semibold lg:hidden">
               ← Swipe to see more posts →
+            </p>
+            <p className="hidden lg:block text-sm text-gray-500 font-semibold">
+              ← Scroll to see more posts →
             </p>
           </div>
         </div>
 
         {/* Horizontal Scrolling Container */}
-        <div className="relative">
-          {/* Gradient Overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-primary to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none" />
+        <div className="relative py-4">
+          {/* Gradient Overlays for smooth edges - only on desktop */}
+          <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none" />
+          <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
           
-          {/* Scrollable Instagram Feed */}
-          <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-4 sm:gap-6 pb-8 w-max">
+          {/* Scrollable Instagram Feed - with visible scrollbar on desktop */}
+          <div className="overflow-x-auto px-8 sm:px-10 lg:px-16 pb-6 scrollbar-visible-desktop">
+            <div className="flex gap-6 lg:gap-8 pb-4 w-max items-start">
               {instagramUrls.slice(0, 6).map((url, index) => (
                 <motion.div
                   key={index}
@@ -658,13 +661,15 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '0px' }}
                   transition={{ delay: index * 0.03, duration: 0.3 }}
-                  className="flex-shrink-0 w-[320px] sm:w-[400px] md:w-[450px] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg"
+                  className="flex-shrink-0 w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white border border-gray-100"
+                  style={{ height: 'auto', maxHeight: '680px' }}
                 >
-                  <div className="bg-white">
+                  <div className="w-full h-full">
                     <InstagramEmbed 
                       url={url} 
                       width="100%"
-                      captioned={false}
+                      captioned
+                      embedPlaceholder={<div className="h-full flex items-center justify-center bg-gray-100"><div className="animate-pulse text-gray-400">Loading...</div></div>}
                     />
                   </div>
                 </motion.div>
@@ -674,8 +679,8 @@ export default function Home() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12 px-4">
-          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-base px-8 py-6 shadow-lg transition-all">
+        <div className="text-center mt-16 px-4">
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold text-base px-10 py-6 shadow-lg hover:shadow-xl transition-all">
             <a href="https://www.instagram.com/teamkavach/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
               <IconBrandInstagram className="w-5 h-5" strokeWidth={2} />
               Follow @teamkavach
@@ -683,14 +688,39 @@ export default function Home() {
           </Button>
         </div>
 
-        {/* Custom Scrollbar Hide */}
+        {/* Custom Scrollbar Styles */}
         <style>{`
-          .scrollbar-hide::-webkit-scrollbar {
+          /* Hide scrollbar on mobile */
+          .scrollbar-visible-desktop::-webkit-scrollbar {
+            height: 8px;
             display: none;
           }
-          .scrollbar-hide {
+          .scrollbar-visible-desktop {
             -ms-overflow-style: none;
             scrollbar-width: none;
+          }
+          
+          /* Show styled scrollbar on desktop */
+          @media (min-width: 1024px) {
+            .scrollbar-visible-desktop::-webkit-scrollbar {
+              display: block;
+              height: 10px;
+            }
+            .scrollbar-visible-desktop::-webkit-scrollbar-track {
+              background: #f1f1f1;
+              border-radius: 10px;
+            }
+            .scrollbar-visible-desktop::-webkit-scrollbar-thumb {
+              background: #DB143C;
+              border-radius: 10px;
+            }
+            .scrollbar-visible-desktop::-webkit-scrollbar-thumb:hover {
+              background: #b91133;
+            }
+            .scrollbar-visible-desktop {
+              scrollbar-width: thin;
+              scrollbar-color: #DB143C #f1f1f1;
+            }
           }
         `}</style>
       </Section>
