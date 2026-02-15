@@ -71,22 +71,10 @@ export default function Impact() {
 
   const testimonials = [
     {
-      quote: "Team Kavach's education program changed my son's life. The volunteers are so dedicated and caring.",
-      author: "Lakshmi",
-      role: "Parent of Student",
-      image: "/images/testimonials/lakshmi.jpg"
-    },
-    {
-      quote: "The free health camp saved my mother's life. We couldn't afford treatment, but they helped us.",
-      author: "Rajesh",
-      role: "Community Member",
-      image: "/images/testimonials/rajesh.jpg"
-    },
-    {
-      quote: "Volunteering with Team Kavach has been the most rewarding experience of my life.",
-      author: "Priya",
-      role: "Volunteer",
-      image: "/images/testimonials/priya.jpg"
+      quote: "Groups like KAVACH, its founders and members are the ones, who make me keep faith in humanity. Young yet responsible, few yet impactful, small steps yet strong vision. They are inspiring, motivating and quietly reminding of the good stuff we all can do. A society and a country becomes better because of these kind of people and their selfless efforts. I feel happy and privileged to have known Vishwala and Kavach. Proud of you guys. Wish you the best in everything you do through Kavach or otherwise.",
+      author: "Mr. Manjunath BN",
+      role: "Principal, Adhyayana PU College, Bangalore",
+      image: ""
     }
   ];
 
