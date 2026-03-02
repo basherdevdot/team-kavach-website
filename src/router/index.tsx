@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AppLayout } from '../components/layout/AppLayout';
+import HomeNew from '../pages/HomeNew';
 
-// Pages - lazy load for better performance
-const HomeNew = React.lazy(() => import('../pages/HomeNew'));
+// Pages - lazy load for better performance (HomeNew is static for instant first load)
 const ProgramsNew = React.lazy(() => import('../pages/ProgramsNew'));
 const GetInvolvedNew = React.lazy(() => import('../pages/GetInvolvedNew'));
 const AboutNew = React.lazy(() => import('../pages/AboutNew'));

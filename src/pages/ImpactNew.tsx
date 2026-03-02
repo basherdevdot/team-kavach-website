@@ -1,14 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import {
-  IconSchool,
-  IconMedicalCross,
-  IconHeartHandshake,
-  IconTrendingUp,
-  IconSparkles,
-  IconQuote
-} from '@tabler/icons-react';
+import IconSchool from '@tabler/icons-react/dist/esm/icons/IconSchool';
+import IconMedicalCross from '@tabler/icons-react/dist/esm/icons/IconMedicalCross';
+import IconHeartHandshake from '@tabler/icons-react/dist/esm/icons/IconHeartHandshake';
+import IconTrendingUp from '@tabler/icons-react/dist/esm/icons/IconTrendingUp';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
+import IconQuote from '@tabler/icons-react/dist/esm/icons/IconQuote';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 

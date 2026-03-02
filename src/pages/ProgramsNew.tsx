@@ -1,14 +1,12 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {
-  IconSchool,
-  IconMedicalCross,
-  IconHeartHandshake,
-  IconUsers,
-  IconCircleCheck,
-  IconTrophy
-} from '@tabler/icons-react';
+import IconSchool from '@tabler/icons-react/dist/esm/icons/IconSchool';
+import IconMedicalCross from '@tabler/icons-react/dist/esm/icons/IconMedicalCross';
+import IconHeartHandshake from '@tabler/icons-react/dist/esm/icons/IconHeartHandshake';
+import IconUsers from '@tabler/icons-react/dist/esm/icons/IconUsers';
+import IconCircleCheck from '@tabler/icons-react/dist/esm/icons/IconCircleCheck';
+import IconTrophy from '@tabler/icons-react/dist/esm/icons/IconTrophy';
 import { Button } from '@/components/ui/button';
 
 const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ 

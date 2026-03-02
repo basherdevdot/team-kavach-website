@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { IconMail, IconPhone, IconMapPin, IconSparkles, IconSend } from '@tabler/icons-react';
+import IconMail from '@tabler/icons-react/dist/esm/icons/IconMail';
+import IconPhone from '@tabler/icons-react/dist/esm/icons/IconPhone';
+import IconMapPin from '@tabler/icons-react/dist/esm/icons/IconMapPin';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
+import IconSend from '@tabler/icons-react/dist/esm/icons/IconSend';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 

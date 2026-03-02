@@ -1,16 +1,14 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import {
-  IconUsers,
-  IconHeart,
-  IconCalendar,
-  IconBrandInstagram,
-  IconMail,
-  IconArrowRight,
-  IconCircleCheck,
-  IconSparkles
-} from '@tabler/icons-react';
+import IconUsers from '@tabler/icons-react/dist/esm/icons/IconUsers';
+import IconHeart from '@tabler/icons-react/dist/esm/icons/IconHeart';
+import IconCalendar from '@tabler/icons-react/dist/esm/icons/IconCalendar';
+import IconBrandInstagram from '@tabler/icons-react/dist/esm/icons/IconBrandInstagram';
+import IconMail from '@tabler/icons-react/dist/esm/icons/IconMail';
+import IconArrowRight from '@tabler/icons-react/dist/esm/icons/IconArrowRight';
+import IconCircleCheck from '@tabler/icons-react/dist/esm/icons/IconCircleCheck';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 

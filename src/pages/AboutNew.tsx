@@ -1,14 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import {
-  IconHeart,
-  IconUsers,
-  IconTarget,
-  IconSparkles,
-  IconArrowRight,
-  IconQuote
-} from '@tabler/icons-react';
+import IconHeart from '@tabler/icons-react/dist/esm/icons/IconHeart';
+import IconUsers from '@tabler/icons-react/dist/esm/icons/IconUsers';
+import IconTarget from '@tabler/icons-react/dist/esm/icons/IconTarget';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
+import IconArrowRight from '@tabler/icons-react/dist/esm/icons/IconArrowRight';
+import IconQuote from '@tabler/icons-react/dist/esm/icons/IconQuote';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
