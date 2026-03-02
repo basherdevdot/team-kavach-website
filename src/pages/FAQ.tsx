@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IconChevronDown, IconSparkles } from '@tabler/icons-react';
+import IconChevronDown from '@tabler/icons-react/dist/esm/icons/IconChevronDown';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
 import { faqs } from '../data/mockData';
 
 const FAQ: React.FC = () => {

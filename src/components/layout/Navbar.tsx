@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IconMenu2, IconX, IconHeart } from '@tabler/icons-react';
+import IconMenu2 from '@tabler/icons-react/dist/esm/icons/IconMenu2';
+import IconX from '@tabler/icons-react/dist/esm/icons/IconX';
+import IconHeart from '@tabler/icons-react/dist/esm/icons/IconHeart';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [

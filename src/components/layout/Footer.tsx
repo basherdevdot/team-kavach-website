@@ -1,19 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IconBrandInstagram, IconBrandLinkedin, IconBrandYoutube, IconMail, IconPhone, IconMapPin } from '@tabler/icons-react';
+import IconBrandInstagram from '@tabler/icons-react/dist/esm/icons/IconBrandInstagram';
+import IconBrandLinkedin from '@tabler/icons-react/dist/esm/icons/IconBrandLinkedin';
+import IconBrandYoutube from '@tabler/icons-react/dist/esm/icons/IconBrandYoutube';
+import IconMail from '@tabler/icons-react/dist/esm/icons/IconMail';
+import IconPhone from '@tabler/icons-react/dist/esm/icons/IconPhone';
+import IconMapPin from '@tabler/icons-react/dist/esm/icons/IconMapPin';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
   { name: 'Programs', path: '/programs' },
   { name: 'Gallery', path: '/gallery' },
+  { name: 'Get Involved', path: '/get-involved' },
+  { name: 'About', path: '/about' },
   { name: 'Impact', path: '/impact' },
 ];
 
-const volunteerLinks = [
-  { name: 'Get Involved', path: '/get-involved' },
-  // { name: 'Volunteer Stories', path: '/stories' },
-];
+const volunteerLinks: { name: string; path: string }[] = [];
 
 const supportLinks = [
   { name: 'Donate', path: '/donate' },
@@ -101,6 +104,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Volunteer */}
+          {volunteerLinks.length > 0 && (
           <div>
             <h3 className="font-black text-lg mb-6 text-white">Volunteer</h3>
             <ul className="space-y-3">
@@ -116,6 +120,7 @@ export const Footer: React.FC = () => {
               ))}
             </ul>
           </div>
+          )}
 
           {/* Support */}
           <div>

@@ -2,21 +2,19 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { InstagramEmbed } from 'react-social-media-embed';
-import { 
-  IconHeart, 
-  IconUsers, 
-  IconSchool,
-  IconMedicalCross,
-  IconHeartHandshake,
-  IconArrowRight,
-  IconBrandInstagram,
-  IconCalendar,
-  IconSparkles,
-  IconCircleCheck,
-  IconFlame,
-  IconStar,
-  IconSunrise
-} from '@tabler/icons-react';
+import IconHeart from '@tabler/icons-react/dist/esm/icons/IconHeart';
+import IconUsers from '@tabler/icons-react/dist/esm/icons/IconUsers';
+import IconSchool from '@tabler/icons-react/dist/esm/icons/IconSchool';
+import IconMedicalCross from '@tabler/icons-react/dist/esm/icons/IconMedicalCross';
+import IconHeartHandshake from '@tabler/icons-react/dist/esm/icons/IconHeartHandshake';
+import IconArrowRight from '@tabler/icons-react/dist/esm/icons/IconArrowRight';
+import IconBrandInstagram from '@tabler/icons-react/dist/esm/icons/IconBrandInstagram';
+import IconCalendar from '@tabler/icons-react/dist/esm/icons/IconCalendar';
+import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
+import IconCircleCheck from '@tabler/icons-react/dist/esm/icons/IconCircleCheck';
+import IconFlame from '@tabler/icons-react/dist/esm/icons/IconFlame';
+import IconStar from '@tabler/icons-react/dist/esm/icons/IconStar';
+import IconSunrise from '@tabler/icons-react/dist/esm/icons/IconSunrise';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -73,6 +71,8 @@ export default function Home() {
   // Load events and Instagram posts from JSON
   const [events, setEvents] = useState<any[]>([]);
   const [instagramUrls, setInstagramUrls] = useState<string[]>([]);
+  const [instagramVisible, setInstagramVisible] = useState(false);
+  const instagramSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Fetch events data
@@ -85,6 +85,36 @@ export default function Home() {
       .catch(err => console.error('Error loading events:', err));
   }, []);
 
+  // Lazy-load Instagram embeds — only mount when section scrolls into view
+  useEffect(() => {
+    const el = instagramSectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInstagramVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Add title attributes to Instagram iframes for accessibility
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const iframes = document.querySelectorAll('iframe[id^="instagram-embed"]');
+      iframes.forEach((iframe, i) => {
+        if (!iframe.getAttribute('title')) {
+          iframe.setAttribute('title', `Instagram post ${i + 1} from Team Kavach`);
+        }
+      });
+    }, 3000); // Wait for embeds to load
+    return () => clearTimeout(timer);
+  }, [instagramUrls]);
+
   const programs = [
     {
       icon: IconSchool,
@@ -92,7 +122,7 @@ export default function Home() {
       description: 'Teaching programs, exam kit distribution, and notebook recycling drives for government schools',
       impact: '760+ notebooks recycled',
       color: 'bg-blue-500',
-      image: '/images/programs/education.jpg'
+      image: '/images/programs/education.webp'
     },
     {
       icon: IconMedicalCross,
@@ -100,7 +130,7 @@ export default function Home() {
       description: 'Blood donation camps supporting thalassemia patients and sanitary kit distribution',
       impact: '50,000+ ml blood collected',
       color: 'bg-primary',
-      image: '/images/programs/healthcare.jpg'
+      image: '/images/programs/healthcare.webp'
     },
     {
       icon: IconHeartHandshake,
@@ -108,7 +138,7 @@ export default function Home() {
       description: 'Plog Treks, lake cleaning with bio-enzymes, and umbrella distribution for street vendors',
       impact: '600+ kg plastic cleaned',
       color: 'bg-green-500',
-      image: '/images/programs/community.jpg'
+      image: '/images/programs/community.webp'
     }
   ];
 
@@ -151,11 +181,14 @@ export default function Home() {
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0">
           <img 
-            src="/images/kavachGroup.jpg" 
-            alt="Team Kavach"
+            src="/images/kavachGroup.webp" 
+            alt="Team Kavach volunteers group photo"
+            width={1200}
+            height={717}
             className="w-full h-full object-cover scale-105"
+            loading="eager"
             onError={(e) => {
-              e.currentTarget.style.display = 'none';
+              e.currentTarget.src = '/images/kavachGroup.jpg';
             }}
           />
           {/* Refined Dark Overlay - Better contrast */}
@@ -212,13 +245,15 @@ export default function Home() {
               <button
                 key={idx}
                 onClick={() => setCurrentSlogan(idx)}
-                className={`relative h-1.5 sm:h-2 rounded-full transition-all duration-500 ${
-                  idx === currentSlogan 
-                    ? 'w-8 sm:w-12 bg-white' 
-                    : 'w-1.5 sm:w-2 bg-white/40 hover:bg-white/60'
-                }`}
+                className="relative flex items-center justify-center min-w-[24px] min-h-[24px] p-1"
                 aria-label={slogan.text}
-              />
+              >
+                <span className={`block rounded-full transition-all duration-500 ${
+                  idx === currentSlogan 
+                    ? 'w-8 sm:w-12 h-1.5 sm:h-2 bg-white' 
+                    : 'w-2 sm:w-2.5 h-1.5 sm:h-2 bg-white/40 hover:bg-white/60'
+                }`} />
+              </button>
             ))}
           </motion.div>
 
@@ -359,6 +394,8 @@ export default function Home() {
                       <img 
                         src={events[0].posterUrl} 
                         alt={events[0].title}
+                        width={600}
+                        height={800}
                         loading="lazy"
                         decoding="async"
                         className="w-full h-auto object-contain"
@@ -530,6 +567,10 @@ export default function Home() {
                         <img 
                           src={program.image} 
                           alt={program.title}
+                          width={400}
+                          height={192}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             // Fallback if image not found
@@ -582,6 +623,10 @@ export default function Home() {
             <img 
               src="/images/volunteers/team-action.jpg" 
               alt="Team Kavach Volunteers"
+              width={600}
+              height={384}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover opacity-60"
               onError={(e) => {
                 // Fallback if image not found
@@ -618,6 +663,7 @@ export default function Home() {
       </Section>
 
       {/* Instagram Gallery - Horizontal Scrolling Carousel */}
+      <div ref={instagramSectionRef}>
       <Section className="py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="text-center">
@@ -665,12 +711,20 @@ export default function Home() {
                   style={{ height: 'auto', maxHeight: '680px' }}
                 >
                   <div className="w-full h-full">
-                    <InstagramEmbed 
-                      url={url} 
-                      width="100%"
-                      captioned
-                      embedPlaceholder={<div className="h-full flex items-center justify-center bg-gray-100"><div className="animate-pulse text-gray-400">Loading...</div></div>}
-                    />
+                    {instagramVisible ? (
+                      <InstagramEmbed 
+                        url={url} 
+                        width="100%"
+                        captioned
+                        embedPlaceholder={<div className="h-[400px] flex items-center justify-center bg-gray-100"><div className="animate-pulse text-gray-400">Loading...</div></div>}
+                      />
+                    ) : (
+                      <div className="h-[500px] bg-gray-100 flex flex-col items-center justify-center gap-3">
+                        <IconBrandInstagram className="w-10 h-10 text-gray-300" />
+                        <div className="w-32 h-3 bg-gray-200 rounded animate-pulse" />
+                        <div className="w-24 h-3 bg-gray-200 rounded animate-pulse" />
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -724,6 +778,7 @@ export default function Home() {
           }
         `}</style>
       </Section>
+      </div>
 
       {/* Final CTA */}
       <Section className="py-20 bg-primary text-white">

@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { IconPhotoPlus, IconX, IconArrowLeft, IconCalendar, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import IconPhotoPlus from '@tabler/icons-react/dist/esm/icons/IconPhotoPlus';
+import IconX from '@tabler/icons-react/dist/esm/icons/IconX';
+import IconArrowLeft from '@tabler/icons-react/dist/esm/icons/IconArrowLeft';
+import IconCalendar from '@tabler/icons-react/dist/esm/icons/IconCalendar';
+import IconChevronLeft from '@tabler/icons-react/dist/esm/icons/IconChevronLeft';
+import IconChevronRight from '@tabler/icons-react/dist/esm/icons/IconChevronRight';
 
 interface Photo {
   id: number;
@@ -205,7 +210,7 @@ const Gallery: React.FC = () => {
                     alt={photo.caption}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.src = '/images/kavachGroup.jpg';
+                      e.currentTarget.src = '/images/kavachGroup.webp';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -222,7 +227,7 @@ const Gallery: React.FC = () => {
         {/* Lightbox Modal - Below navbar */}
         {selectedPhoto && (
           <div
-            className="fixed top-20 left-0 right-0 bottom-0 bg-black z-[60] flex flex-col items-center justify-center px-16 py-4"
+            className="fixed top-20 left-0 right-0 bottom-0 bg-black z-[60] flex flex-col items-center justify-center px-4 sm:px-8 md:px-16 py-4"
             onClick={() => setSelectedPhoto(null)}
           >
             <button
@@ -343,7 +348,7 @@ const Gallery: React.FC = () => {
                     alt={event.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.src = '/images/kavachGroup.jpg';
+                      e.currentTarget.src = '/images/kavachGroup.webp';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent group-hover:from-black/95">
