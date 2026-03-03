@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import IconMail from '@tabler/icons-react/dist/esm/icons/IconMail';
 import IconPhone from '@tabler/icons-react/dist/esm/icons/IconPhone';
 import IconMapPin from '@tabler/icons-react/dist/esm/icons/IconMapPin';
 import IconSparkles from '@tabler/icons-react/dist/esm/icons/IconSparkles';
 import IconSend from '@tabler/icons-react/dist/esm/icons/IconSend';
+import IconCircleCheck from '@tabler/icons-react/dist/esm/icons/IconCircleCheck';
+import IconAlertCircle from '@tabler/icons-react/dist/esm/icons/IconAlertCircle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -29,6 +31,44 @@ const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({
 };
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    topic: '',
+    message: '',
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '0b638aff-a7eb-43ae-bde0-56f6fc766406',
+          subject: `Team Kavach Contact: ${formData.topic || 'General Enquiry'}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', topic: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
   const contactInfo = [
     {
       icon: IconMail,
@@ -89,19 +129,37 @@ const Contact: React.FC = () => {
               
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6 md:p-8">
-                  <form className="space-y-5">
+                  {status === 'success' ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                        <IconCircleCheck className="w-9 h-9 text-green-600" />
+                      </div>
+                      <h3 className="text-xl font-black text-gray-900">Message Sent!</h3>
+                      <p className="text-muted-foreground max-w-xs">Thank you for reaching out. We'll get back to you within 1-2 business days.</p>
+                      <Button variant="outline" className="mt-2" onClick={() => setStatus('idle')}>Send Another Message</Button>
+                    </div>
+                  ) : (
+                  <form className="space-y-5" onSubmit={handleSubmit}>
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Name</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Name <span className="text-primary">*</span></label>
                       <input 
-                        type="text" 
+                        type="text"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-gray-50/50" 
                         placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Email</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Email <span className="text-primary">*</span></label>
                       <input 
-                        type="email" 
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-gray-50/50" 
                         placeholder="your@email.com"
                       />
@@ -109,14 +167,21 @@ const Contact: React.FC = () => {
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">Phone</label>
                       <input 
-                        type="tel" 
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-gray-50/50" 
                         placeholder="+91 XXXXX XXXXX"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">Topic</label>
-                      <select className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-gray-50/50">
+                      <select
+                        name="topic"
+                        value={formData.topic}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all bg-gray-50/50">
                         <option value="">Select a topic</option>
                         <option>Volunteering</option>
                         <option>Donation</option>
@@ -126,18 +191,35 @@ const Contact: React.FC = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Message</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Message <span className="text-primary">*</span></label>
                       <textarea 
-                        rows={5} 
+                        name="message"
+                        required
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none bg-gray-50/50" 
                         placeholder="How can we help you?"
                       />
                     </div>
-                    <Button className="w-full bg-[#DB143C] hover:bg-[#b91133] text-white font-bold py-6 rounded-xl">
-                      <IconSend className="w-5 h-5 mr-2" />
-                      Send Message
+                    {status === 'error' && (
+                      <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm font-medium">
+                        <IconAlertCircle className="w-4 h-4 flex-shrink-0" />
+                        Something went wrong. Please try again or email us directly at kavachtrust@gmail.com
+                      </div>
+                    )}
+                    <Button
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className="w-full bg-[#DB143C] hover:bg-[#b91133] text-white font-bold py-6 rounded-xl disabled:opacity-70">
+                      {status === 'loading' ? (
+                        <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Sending...</span>
+                      ) : (
+                        <span className="flex items-center gap-2"><IconSend className="w-5 h-5" />Send Message</span>
+                      )}
                     </Button>
                   </form>
+                  )}
                 </CardContent>
               </Card>
             </div>
